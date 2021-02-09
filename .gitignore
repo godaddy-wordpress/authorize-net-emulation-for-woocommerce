@@ -1,0 +1,40 @@
+#####################################################################
+#
+# What should be added here?
+#
+# Repository level gitignore files are intended for project 
+# based exclusions.  To add local exclusions specific to your
+# individual development enviorment you should update your
+# global .gitignore file which will resolve all current and
+# future repository git commit exclusions.
+#
+#####################################################################
+
+# Ignore Local Dependencies
+node_modules
+vendor
+
+# Ignore test coverage output
+coverage
+
+# Ignore local dev config
+.env
+.env.development
+
+# Ignore Local Cache Files
+*.cache
+
+# Ignore Local Log Files
+*.log
+
+# Ignore Linter Files
+.php_cs.cache
+
+# Ingore VM files
+.vagrant
+
+# Ignore Documentation Local Files
+documentation/.docusaurus
+documentation/.cache-loader
+documentation/build
+documentation/node_modules

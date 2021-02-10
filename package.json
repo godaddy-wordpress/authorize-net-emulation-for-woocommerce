@@ -1,0 +1,15 @@
+{
+  "name": "authorize-net-emulation-for-woocommerce",
+  "author": "SkyVerge Team",
+  "homepage": "https://skyverge.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gdcorp-partners/authorize-net-emulation-for-woocommerce.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gdcorp-partners/authorize-net-emulation-for-woocommerce/issues?state=open"
+  },
+  "devDependencies": {
+    "sake": "github:skyverge/sake"
+  }
+}

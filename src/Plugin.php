@@ -25,14 +25,15 @@ namespace SkyVerge\WooCommerce\Authorize_Net\Emulation;
 
 use SkyVerge\WooCommerce\PluginFramework\v5_10_3 as Framework;
 
-defined( 'ABSPATH' ) or exit;
+defined('ABSPATH') or exit;
 
 /**
  * Authorize.Net Emulation main plugin class.
  *
  * @since 1.0.0
  */
-class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
+class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin
+{
 
 
     /** plugin version number */
@@ -53,8 +54,8 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
      *
      * @since 1.0.0
      */
-    public function __construct() {
-
+    public function __construct()
+    {
         parent::__construct(
             self::PLUGIN_ID,
             self::VERSION,
@@ -75,9 +76,9 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
      * @param string $country_code the 2-letter country code for the billing country
      * @return string the label for the "billing state" field at checkout
      */
-    protected function get_state_label( $country_code ) {
-
-        switch( $country_code ) {
+    protected function get_state_label($country_code)
+    {
+        switch ($country_code) {
 
             case 'AF':
             case 'AT':
@@ -88,31 +89,31 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
             case 'LK':
             case 'SE':
             case 'VN':
-                $label = __( 'Province', 'authorize-net-emulation-for-woocommerce' );
+                $label = __('Province', 'authorize-net-emulation-for-woocommerce');
                 break;
 
             case 'AX':
             case 'YT':
-                $label = __( 'Island', 'authorize-net-emulation-for-woocommerce' );
+                $label = __('Island', 'authorize-net-emulation-for-woocommerce');
                 break;
 
             case 'DE':
-                $label = __( 'State', 'authorize-net-emulation-for-woocommerce' );
+                $label = __('State', 'authorize-net-emulation-for-woocommerce');
                 break;
 
             case 'EE':
             case 'NO':
-                $label = __( 'County', 'authorize-net-emulation-for-woocommerce' );
+                $label = __('County', 'authorize-net-emulation-for-woocommerce');
                 break;
 
             case 'FI':
             case 'IL':
             case 'LB':
-                $label = __( 'District', 'authorize-net-emulation-for-woocommerce' );
+                $label = __('District', 'authorize-net-emulation-for-woocommerce');
                 break;
 
             default:
-                $label = __( 'Region', 'authorize-net-emulation-for-woocommerce' );
+                $label = __('Region', 'authorize-net-emulation-for-woocommerce');
         }
 
         return $label;
@@ -128,7 +129,8 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
      *
      * @return bool
      */
-    public function require_tls_1_2() {
+    public function require_tls_1_2()
+    {
         return true;
     }
 
@@ -142,7 +144,8 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
      *
      * @return string
      */
-    public function get_documentation_url() {
+    public function get_documentation_url()
+    {
         // TODO: Replace with the documentation URL once it's available. {IT 2021-02-10}
         return '';
     }
@@ -157,7 +160,8 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
      *
      * @return string
      */
-    public function get_support_url() {
+    public function get_support_url()
+    {
         // TODO: Replace with the support URL once it's available. {IT 2021-02-10}
         return '';
     }
@@ -172,7 +176,8 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
      *
      * @return string
      */
-    public function get_sales_page_url() {
+    public function get_sales_page_url()
+    {
         // TODO: Replace with the sales page URL once it's available. {IT 2021-02-10}
         return '';
     }
@@ -187,8 +192,9 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
      *
      * @return string the plugin name
      */
-    public function get_plugin_name() {
-        return __( 'Authorize.Net Emulation for WooCommerce', 'authorize-net-emulation-for-woocommerce' );
+    public function get_plugin_name()
+    {
+        return __('Authorize.Net Emulation for WooCommerce', 'authorize-net-emulation-for-woocommerce');
     }
 
 
@@ -200,7 +206,8 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
      * @see SV_WC_Plugin::get_file()
      * @return string the full path and filename of the plugin file
      */
-    protected function get_file() {
+    protected function get_file()
+    {
         return __DIR__;
     }
 
@@ -214,15 +221,12 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
      *
      * @return Plugin
      */
-    public static function instance() {
-
-        if ( null === self::$instance ) {
-
+    public static function instance()
+    {
+        if (null === self::$instance) {
             self::$instance = new self();
         }
 
         return self::$instance;
     }
-
-
 }

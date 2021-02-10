@@ -34,4 +34,3 @@ function wc_authorize_net_emulation(): Plugin
 {
     return Plugin::instance();
 }
-

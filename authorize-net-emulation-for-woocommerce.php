@@ -24,7 +24,7 @@
  * WC tested up to: 5.0.0
  */
 
-defined('ABSPATH') or exit;
+defined( 'ABSPATH' ) or exit;
 
 
 /**
@@ -32,8 +32,7 @@ defined('ABSPATH') or exit;
  *
  * @since 1.0.0-dev.1
  */
-class WC_Authorize_Net_Emulation_Loader
-{
+class WC_Authorize_Net_Emulation_Loader {
 
 
     /** minimum PHP version required by this plugin */
@@ -64,20 +63,20 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @since 1.0.0-dev.1
      */
-    protected function __construct()
-    {
-        register_activation_hook(__FILE__, [$this, 'doActivationCheck']);
+    protected function __construct() {
 
-        add_action('admin_init', [$this, 'checkEnvironment']);
-        add_action('admin_init', [$this, 'addPluginNotices']);
+        register_activation_hook( __FILE__, [ $this, 'doActivationCheck' ] );
 
-        add_action('admin_notices', [$this, 'outputAdminNotices'], 15);
+        add_action( 'admin_init', [ $this, 'checkEnvironment' ] );
+        add_action( 'admin_init', [ $this, 'addPluginNotices' ] );
 
-        add_filter('extra_plugin_headers', [$this, 'addDocumentationHeader']);
+        add_action( 'admin_notices', [ $this, 'outputAdminNotices' ], 15 );
+
+        add_filter( 'extra_plugin_headers', [ $this, 'addDocumentationHeader' ] );
 
         // if the environment check fails, initialize the plugin
-        if ($this->isEnvironmentCompatible()) {
-            add_action('plugins_loaded', [$this, 'initPlugin']);
+        if ( $this->isEnvironmentCompatible() ) {
+            add_action( 'plugins_loaded', [ $this, 'initPlugin' ] );
         }
     }
 
@@ -87,9 +86,9 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @since 1.0.0-dev.1
      */
-    public function __clone()
-    {
-        _doing_it_wrong(__FUNCTION__, sprintf('You cannot clone instances of %s.', get_class($this)), '1.0.0-dev.1');
+    public function __clone() {
+
+        _doing_it_wrong( __FUNCTION__, sprintf( 'You cannot clone instances of %s.', get_class( $this ) ), '1.0.0-dev.1' );
     }
 
 
@@ -98,9 +97,9 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @since 1.0.0-dev.1
      */
-    public function __wakeup()
-    {
-        _doing_it_wrong(__FUNCTION__, sprintf('You cannot unserialize instances of %s.', get_class($this)), '1.0.0-dev.1');
+    public function __wakeup() {
+
+        _doing_it_wrong( __FUNCTION__, sprintf( 'You cannot unserialize instances of %s.', get_class( $this ) ), '1.0.0-dev.1' );
     }
 
 
@@ -109,16 +108,16 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @since 1.0.0-dev.1
      */
-    public function initPlugin()
-    {
-        if (! $this->pluginsCompatible()) {
+    public function initPlugin() {
+
+        if ( ! $this->pluginsCompatible() ) {
             return;
         }
 
         $this->loadFramework();
 
-        require_once plugin_dir_path(__FILE__).'vendor/autoload.php';
-        require_once plugin_dir_path(__FILE__).'src/Functions.php';
+        require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+        require_once plugin_dir_path( __FILE__ ) . 'src/Functions.php';
 
         // fire it up!
         wc_authorize_net_emulation();
@@ -130,14 +129,14 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @since 1.0.0-dev.1
      */
-    private function loadFramework()
-    {
-        if (! class_exists('\\SkyVerge\\WooCommerce\\PluginFramework\\'.$this->getFrameworkVersionNamespace().'\\SV_WC_Plugin')) {
-            require_once(plugin_dir_path(__FILE__).'vendor/skyverge/wc-plugin-framework/woocommerce/class-sv-wc-plugin.php');
+    private function loadFramework() {
+
+        if ( ! class_exists( '\\SkyVerge\\WooCommerce\\PluginFramework\\' . $this->getFrameworkVersionNamespace() . '\\SV_WC_Plugin' ) ) {
+            require_once( plugin_dir_path( __FILE__ ) . 'vendor/skyverge/wc-plugin-framework/woocommerce/class-sv-wc-plugin.php' );
         }
 
-        if (! class_exists('\\SkyVerge\\WooCommerce\\PluginFramework\\'.$this->getFrameworkVersionNamespace().'\\SV_WC_Payment_Gateway_Plugin')) {
-            require_once(plugin_dir_path(__FILE__).'vendor/skyverge/wc-plugin-framework/woocommerce/payment-gateway/class-sv-wc-payment-gateway-plugin.php');
+        if ( ! class_exists( '\\SkyVerge\\WooCommerce\\PluginFramework\\' . $this->getFrameworkVersionNamespace() . '\\SV_WC_Payment_Gateway_Plugin' ) ) {
+            require_once( plugin_dir_path( __FILE__ ) . 'vendor/skyverge/wc-plugin-framework/woocommerce/payment-gateway/class-sv-wc-payment-gateway-plugin.php' );
         }
     }
 
@@ -149,9 +148,9 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @return string
      */
-    public function getFrameworkVersionNamespace() : string
-    {
-        return 'v'.str_replace('.', '_', $this->getFrameworkVersion());
+    public function getFrameworkVersionNamespace(): string {
+
+        return 'v' . str_replace( '.', '_', $this->getFrameworkVersion() );
     }
 
 
@@ -162,8 +161,8 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @return string
      */
-    public function getFrameworkVersion() : string
-    {
+    public function getFrameworkVersion(): string {
+
         return self::FRAMEWORK_VERSION;
     }
 
@@ -177,12 +176,12 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @since 1.0.0-dev.1
      */
-    public function doActivationCheck()
-    {
-        if (! $this->isEnvironmentCompatible()) {
+    public function doActivationCheck() {
+
+        if ( ! $this->isEnvironmentCompatible() ) {
             $this->deactivatePlugin();
 
-            wp_die(self::PLUGIN_NAME.' could not be activated. '.$this->getEnvironmentMessage());
+            wp_die( self::PLUGIN_NAME . ' could not be activated. ' . $this->getEnvironmentMessage() );
         }
     }
 
@@ -194,12 +193,12 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @since 1.0.0-dev.1
      */
-    public function checkEnvironment()
-    {
-        if (! $this->isEnvironmentCompatible() && is_plugin_active(plugin_basename(__FILE__))) {
+    public function checkEnvironment() {
+
+        if ( ! $this->isEnvironmentCompatible() && is_plugin_active( plugin_basename( __FILE__ ) ) ) {
             $this->deactivatePlugin();
 
-            $this->addAdminNotice('bad_environment', 'error', self::PLUGIN_NAME.' has been deactivated. '.$this->getEnvironmentMessage());
+            $this->addAdminNotice( 'bad_environment', 'error', self::PLUGIN_NAME . ' has been deactivated. ' . $this->getEnvironmentMessage() );
         }
     }
 
@@ -211,28 +210,28 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @since 1.0.0-dev.1
      */
-    public function addPluginNotices()
-    {
-        if (! $this->isWordPressCompatible()) {
-            $this->addAdminNotice('update_wordpress', 'error', sprintf(
+    public function addPluginNotices() {
+
+        if ( ! $this->isWordPressCompatible() ) {
+            $this->addAdminNotice( 'update_wordpress', 'error', sprintf(
                 '%s requires WordPress version %s or higher. Please %supdate WordPress &raquo;%s',
-                '<strong>'.self::PLUGIN_NAME.'</strong>',
+                '<strong>' . self::PLUGIN_NAME . '</strong>',
                 self::MINIMUM_WP_VERSION,
-                '<a href="'.esc_url(admin_url('update-core.php')).'">',
+                '<a href="' . esc_url( admin_url( 'update-core.php' ) ) . '">',
                 '</a>'
-            ));
+            ) );
         }
 
-        if (! $this->isWooCommerceCompatible()) {
-            $this->addAdminNotice('update_woocommerce', 'error', sprintf(
+        if ( ! $this->isWooCommerceCompatible() ) {
+            $this->addAdminNotice( 'update_woocommerce', 'error', sprintf(
                 '%1$s requires WooCommerce version %2$s or higher. Please %3$supdate WooCommerce%4$s to the latest version, or %5$sdownload the minimum required version &raquo;%6$s',
-                '<strong>'.self::PLUGIN_NAME.'</strong>',
+                '<strong>' . self::PLUGIN_NAME . '</strong>',
                 self::MINIMUM_WC_VERSION,
-                '<a href="'.esc_url(admin_url('update-core.php')).'">',
+                '<a href="' . esc_url( admin_url( 'update-core.php' ) ) . '">',
                 '</a>',
-                '<a href="'.esc_url('https://downloads.wordpress.org/plugin/woocommerce.'.self::MINIMUM_WC_VERSION.'.zip').'">',
+                '<a href="' . esc_url( 'https://downloads.wordpress.org/plugin/woocommerce.' . self::MINIMUM_WC_VERSION . '.zip' ) . '">',
                 '</a>'
-            ));
+            ) );
         }
     }
 
@@ -244,8 +243,8 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @return bool
      */
-    private function pluginsCompatible() : bool
-    {
+    private function pluginsCompatible(): bool {
+
         return $this->isWordPressCompatible() && $this->isWooCommerceCompatible();
     }
 
@@ -257,14 +256,15 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @return bool
      */
-    private function isWordPressCompatible() : bool
-    {
-        if (! self::MINIMUM_WP_VERSION) {
+    private function isWordPressCompatible(): bool {
+
+        if ( ! self::MINIMUM_WP_VERSION ) {
             return true;
         }
 
-        return version_compare(get_bloginfo('version'), self::MINIMUM_WP_VERSION, '>=');
+        return version_compare( get_bloginfo( 'version' ), self::MINIMUM_WP_VERSION, '>=' );
     }
+
 
     /**
      * Determines if the WooCommerce compatible.
@@ -273,13 +273,13 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @return bool
      */
-    private function isWooCommerceCompatible() : bool
-    {
-        if (! self::MINIMUM_WC_VERSION) {
+    private function isWooCommerceCompatible(): bool {
+
+        if ( ! self::MINIMUM_WC_VERSION ) {
             return true;
         }
 
-        return defined('WC_VERSION') && version_compare(WC_VERSION, self::MINIMUM_WC_VERSION, '>=');
+        return defined( 'WC_VERSION' ) && version_compare( WC_VERSION, self::MINIMUM_WC_VERSION, '>=' );
     }
 
 
@@ -290,12 +290,12 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @since 1.0.0-dev.1
      */
-    protected function deactivatePlugin()
-    {
-        deactivate_plugins(plugin_basename(__FILE__));
+    protected function deactivatePlugin() {
 
-        if (isset($_GET['activate'])) {
-            unset($_GET['activate']);
+        deactivate_plugins( plugin_basename( __FILE__ ) );
+
+        if ( isset( $_GET['activate'] ) ) {
+            unset( $_GET['activate'] );
         }
     }
 
@@ -309,11 +309,11 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @since 1.0.0-dev.1
      */
-    private function addAdminNotice(string $slug, string $class, string $message)
-    {
-        $this->notices[$slug] = [
+    private function addAdminNotice( string $slug, string $class, string $message ) {
+
+        $this->notices[ $slug ] = [
             'class'   => $class,
-            'message' => $message
+            'message' => $message,
         ];
     }
 
@@ -325,12 +325,12 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @since 1.0.0-dev.1
      */
-    public function outputAdminNotices()
-    {
-        foreach ((array)$this->notices as $notice_key => $notice) {
+    public function outputAdminNotices() {
+
+        foreach ( (array) $this->notices as $notice_key => $notice ) {
             ?>
-            <div class="<?php echo esc_attr($notice['class']); ?>">
-                <p><?php echo wp_kses($notice['message'], ['a' => ['href' => []]]); ?></p>
+            <div class="<?php echo esc_attr( $notice['class'] ); ?>">
+                <p><?php echo wp_kses( $notice['message'], [ 'a' => [ 'href' => [] ] ] ); ?></p>
             </div>
             <?php
         }
@@ -348,8 +348,8 @@ class WC_Authorize_Net_Emulation_Loader
      * @since 1.0.0-dev.1
      *
      */
-    public function addDocumentationHeader(array $headers) : array
-    {
+    public function addDocumentationHeader( array $headers ): array {
+
         $headers[] = 'Documentation URI';
 
         return $headers;
@@ -365,9 +365,9 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @return bool
      */
-    private function isEnvironmentCompatible() : bool
-    {
-        return version_compare(PHP_VERSION, self::MINIMUM_PHP_VERSION, '>=');
+    private function isEnvironmentCompatible(): bool {
+
+        return version_compare( PHP_VERSION, self::MINIMUM_PHP_VERSION, '>=' );
     }
 
 
@@ -378,9 +378,9 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @return string
      */
-    private function getEnvironmentMessage() : string
-    {
-        return sprintf('The minimum PHP version required for this plugin is %1$s. You are running %2$s.', self::MINIMUM_PHP_VERSION, PHP_VERSION);
+    private function getEnvironmentMessage(): string {
+
+        return sprintf( 'The minimum PHP version required for this plugin is %1$s. You are running %2$s.', self::MINIMUM_PHP_VERSION, PHP_VERSION );
     }
 
 
@@ -393,14 +393,16 @@ class WC_Authorize_Net_Emulation_Loader
      * @since 1.0.0-dev.1
      *
      */
-    public static function getInstance() : WC_Authorize_Net_Emulation_Loader
-    {
-        if (null === self::$instance) {
+    public static function getInstance(): WC_Authorize_Net_Emulation_Loader {
+
+        if ( null === self::$instance ) {
             self::$instance = new self();
         }
 
         return self::$instance;
     }
+
+
 }
 
 // fire it up!

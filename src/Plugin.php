@@ -71,12 +71,12 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin
     /**
      * Gets a label for states that don't have one set by WooCommerce.
      *
-     * @since 1.0.0
-     *
      * @param string $country_code the 2-letter country code for the billing country
      * @return string the label for the "billing state" field at checkout
+     * @since 1.0.0
+     *
      */
-    protected function get_state_label($country_code)
+    protected function get_state_label(string $country_code): string
     {
         switch ($country_code) {
 
@@ -129,7 +129,7 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin
      *
      * @return bool
      */
-    public function require_tls_1_2()
+    public function require_tls_1_2(): bool
     {
         return true;
     }
@@ -144,7 +144,7 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin
      *
      * @return string
      */
-    public function get_documentation_url()
+    public function get_documentation_url(): string
     {
         // TODO: Replace with the documentation URL once it's available. {IT 2021-02-10}
         return '';
@@ -160,7 +160,7 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin
      *
      * @return string
      */
-    public function get_support_url()
+    public function get_support_url(): string
     {
         // TODO: Replace with the support URL once it's available. {IT 2021-02-10}
         return '';
@@ -176,7 +176,7 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin
      *
      * @return string
      */
-    public function get_sales_page_url()
+    public function get_sales_page_url(): string
     {
         // TODO: Replace with the sales page URL once it's available. {IT 2021-02-10}
         return '';
@@ -192,7 +192,7 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin
      *
      * @return string the plugin name
      */
-    public function get_plugin_name()
+    public function get_plugin_name(): string
     {
         return __('Authorize.Net Emulation for WooCommerce', 'authorize-net-emulation-for-woocommerce');
     }
@@ -206,7 +206,7 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin
      * @see SV_WC_Plugin::get_file()
      * @return string the full path and filename of the plugin file
      */
-    protected function get_file()
+    protected function get_file(): string
     {
         return __DIR__;
     }
@@ -221,7 +221,7 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin
      *
      * @return Plugin
      */
-    public static function instance()
+    public static function instance(): Plugin
     {
         if (null === self::$instance) {
             self::$instance = new self();

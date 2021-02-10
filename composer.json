@@ -1,0 +1,18 @@
+{
+  "name": "skyverge/authorize-net-emulation-for-woocommerce",
+  "type": "wordpress-plugin",
+  "autoload": {
+    "psr-4": {
+      "SkyVerge\\WooCommerce\\Authorize_Net\\Emulation\\": "includes/"
+    }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:skyverge/wc-plugin-framework.git"
+    }
+  ],
+  "require": {
+    "skyverge/wc-plugin-framework": "5.10.3"
+  }
+}

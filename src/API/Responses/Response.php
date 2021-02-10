@@ -23,12 +23,12 @@
 
 namespace SkyVerge\WooCommerce\Authorize_Net\Emulation\API\Responses;
 
-defined('ABSPATH') or exit;
+defined( 'ABSPATH' ) or exit;
 
 use SkyVerge\WooCommerce\PluginFramework\v5_10_3 as Framework;
 
-class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framework\SV_WC_Payment_Gateway_API_Authorization_Response
-{
+class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framework\SV_WC_Payment_Gateway_API_Authorization_Response {
+
     /**
      * Approved transaction response code.
      *
@@ -63,7 +63,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @var string
      */
-    protected $rawResponse;
+    protected $raw_response;
 
     /**
      * Parsed response object.
@@ -74,21 +74,23 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      */
     protected $response;
 
+
     /**
      * Constructs the class.
      *
      * @since 1.0.0-dev.1
      *
-     * @param string $rawResponse raw response data
+     * @param string $raw_response raw response data
      *
      * @throws Framework\SV_WC_Payment_Gateway_Exception
      */
-    public function __construct(string $rawResponse)
-    {
-        $this->rawResponse = $rawResponse;
+    public function __construct( string $raw_response ) {
 
-        $this->parseResponse();
+        $this->raw_response = $raw_response;
+
+        $this->parse_response();
     }
+
 
     /**
      * Parses the response string and set the parsed response object.
@@ -97,29 +99,29 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @throws Framework\SV_WC_Payment_Gateway_Exception
      */
-    protected function parseResponse()
-    {
+    protected function parse_response() {
+
         // adjust response based on our hybrid delimiter :|: (delimiter = | encapsulation = :)
         // remove the leading encap character and add a trailing delimiter/encap character
         // so explode works correctly -- response string starts and ends with an encapsulation
         // character)
-        $this->rawResponse = ltrim($this->rawResponse, ':').'|:';
+        $this->raw_response = ltrim( $this->raw_response, ':' ) . '|:';
 
         // parse response
-        $response = explode(':|:', $this->rawResponse);
+        $response = explode( ':|:', $this->raw_response );
 
-        if (empty($response)) {
-            throw new Framework\SV_WC_Payment_Gateway_Exception(__('Could not parse direct response.', 'woocommerce-gateway-authorize-net-cim'));
+        if ( empty( $response ) ) {
+            throw new Framework\SV_WC_Payment_Gateway_Exception( __( 'Could not parse direct response.', 'woocommerce-gateway-authorize-net-cim' ) );
         }
 
         // offset array by 1 to match Authorize.Net's order, mainly for readability
-        array_unshift($response, null);
+        array_unshift( $response, null );
 
         $this->response = new \stdClass();
 
         // response fields are URL encoded, but we currently do not use any fields
         // (e.g. billing/shipping details) that would be affected by that
-        $responseFields = [
+        $response_fields = [
             'response_code'        => 1,
             'response_subcode'     => 2,
             'response_reason_code' => 3,
@@ -136,10 +138,11 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
             'card_type'            => 52,
         ];
 
-        foreach ($responseFields as $field => $order) {
-            $this->response->$field = (isset($response[$order])) ? $response[$order] : '';
+        foreach ( $response_fields as $field => $order ) {
+            $this->response->$field = ( isset( $response[ $order ] ) ) ? $response[ $order ] : '';
         }
     }
+
 
     /**
      * Determines if the transaction was successful.
@@ -150,10 +153,11 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return bool
      */
-    public function transaction_approved() : bool
-    {
+    public function transaction_approved(): bool {
+
         return self::TRANSACTION_APPROVED === $this->get_status_code();
     }
+
 
     /**
      * Determines if the transaction was held.
@@ -168,10 +172,11 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return bool
      */
-    public function transaction_held() : bool
-    {
+    public function transaction_held(): bool {
+
         return self::TRANSACTION_HELD === $this->get_status_code();
     }
+
 
     /**
      * Gets the response transaction ID.
@@ -182,10 +187,11 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return string|null
      */
-    public function get_transaction_id()
-    {
+    public function get_transaction_id() {
+
         return $this->response->transaction_id;
     }
+
 
     /**
      * Gets the transaction status message.
@@ -199,10 +205,11 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return string|null
      */
-    public function get_status_message()
-    {
+    public function get_status_message() {
+
         return $this->response->response_reason_text;
     }
+
 
     /**
      * Gets the transaction status code.
@@ -213,10 +220,11 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return string|null
      */
-    public function get_status_code()
-    {
+    public function get_status_code() {
+
         return $this->response->response_code;
     }
+
 
     /**
      * Gets the transaction authorization code.
@@ -230,10 +238,11 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return string|null
      */
-    public function get_authorization_code()
-    {
+    public function get_authorization_code() {
+
         return $this->response->authorization_code;
     }
+
 
     /**
      * Gets the result of the AVS check.
@@ -245,10 +254,11 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return string|null
      */
-    public function get_avs_result()
-    {
+    public function get_avs_result() {
+
         return $this->response->avs_response;
     }
+
 
     /**
      * Gets the result of the CSC check.
@@ -259,10 +269,11 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return string|null
      */
-    public function get_csc_result()
-    {
+    public function get_csc_result() {
+
         return $this->response->csc_response;
     }
+
 
     /**
      * Determines if the CSC check was successful.
@@ -274,10 +285,11 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return bool
      */
-    public function csc_match() : bool
-    {
+    public function csc_match(): bool {
+
         return self::CSC_MATCH === $this->get_csc_result();
     }
+
 
     /**
      * Gets the result of the CAVV (Cardholder authentication verification) check.
@@ -288,10 +300,11 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return string|null
      */
-    public function get_cavv_result()
-    {
+    public function get_cavv_result() {
+
         return $this->response->cavv_response;
     }
+
 
     /**
      * Gets a message appropriate for a frontend user.
@@ -303,10 +316,11 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return string
      */
-    public function get_user_message() : string
-    {
+    public function get_user_message(): string {
+
         return '';
     }
+
 
     /**
      * Gets the payment type: 'credit-card', 'echeck', etc
@@ -315,10 +329,11 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return string payment type or null if not available
      */
-    public function get_payment_type() : string
-    {
+    public function get_payment_type(): string {
+
         return 'credit-card';
     }
+
 
     /**
      * Gets the string representation of the response
@@ -327,10 +342,11 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return string
      */
-    public function to_string() : string
-    {
-        return $this->rawResponse;
+    public function to_string(): string {
+
+        return $this->raw_response;
     }
+
 
     /**
      * Gets the string representation of the response.
@@ -341,9 +357,11 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return string
      */
-    public function to_string_safe() : string
-    {
+    public function to_string_safe(): string {
+
         // no sensitive data to mask in response
-        return $this->rawResponse;
+        return $this->raw_response;
     }
+
+
 }

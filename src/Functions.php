@@ -21,14 +21,16 @@
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
+use SkyVerge\WooCommerce\Authorize_Net\Emulation\Plugin;
+
 /**
  * Gets the One True Instance of Authorize.Net Emulation.
  *
- * @return \SkyVerge\WooCommerce\Authorize_Net\Emulation
- *
  * @since 1.0.0-dev.1
+ *
+ * @return Plugin
  */
-function wc_authorize_net_emulation() {
-    // TODO: returns plugin's instance
-}
+function wc_authorize_net_emulation(): Plugin {
 
+    return Plugin::instance();
+}

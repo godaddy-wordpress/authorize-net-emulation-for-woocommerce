@@ -117,7 +117,7 @@ class WC_Authorize_Net_Emulation_Loader
 
         $this->loadFramework();
 
-        require_once plugin_dir_path(__FILE__ ).'vendor/autoload.php';
+        require_once plugin_dir_path(__FILE__).'vendor/autoload.php';
         require_once plugin_dir_path(__FILE__).'src/Functions.php';
 
         // fire it up!
@@ -132,11 +132,11 @@ class WC_Authorize_Net_Emulation_Loader
      */
     private function loadFramework()
     {
-        if (! class_exists('\\SkyVerge\\WooCommerce\\PluginFramework\\' . $this->getFrameworkVersionNamespace() . '\\SV_WC_Plugin')) {
+        if (! class_exists('\\SkyVerge\\WooCommerce\\PluginFramework\\'.$this->getFrameworkVersionNamespace().'\\SV_WC_Plugin')) {
             require_once(plugin_dir_path(__FILE__).'vendor/skyverge/wc-plugin-framework/woocommerce/class-sv-wc-plugin.php');
         }
 
-        if (! class_exists('\\SkyVerge\\WooCommerce\\PluginFramework\\' . $this->getFrameworkVersionNamespace() . '\\SV_WC_Payment_Gateway_Plugin')) {
+        if (! class_exists('\\SkyVerge\\WooCommerce\\PluginFramework\\'.$this->getFrameworkVersionNamespace().'\\SV_WC_Payment_Gateway_Plugin')) {
             require_once(plugin_dir_path(__FILE__).'vendor/skyverge/wc-plugin-framework/woocommerce/payment-gateway/class-sv-wc-payment-gateway-plugin.php');
         }
     }
@@ -149,9 +149,9 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @return string
      */
-    public function getFrameworkVersionNamespace(): string
+    public function getFrameworkVersionNamespace() : string
     {
-        return 'v' . str_replace('.', '_', $this->getFrameworkVersion());
+        return 'v'.str_replace('.', '_', $this->getFrameworkVersion());
     }
 
 
@@ -162,7 +162,7 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @return string
      */
-    public function getFrameworkVersion(): string
+    public function getFrameworkVersion() : string
     {
         return self::FRAMEWORK_VERSION;
     }
@@ -182,7 +182,7 @@ class WC_Authorize_Net_Emulation_Loader
         if (! $this->isEnvironmentCompatible()) {
             $this->deactivatePlugin();
 
-            wp_die(self::PLUGIN_NAME . ' could not be activated. ' . $this->getEnvironmentMessage());
+            wp_die(self::PLUGIN_NAME.' could not be activated. '.$this->getEnvironmentMessage());
         }
     }
 
@@ -199,7 +199,7 @@ class WC_Authorize_Net_Emulation_Loader
         if (! $this->isEnvironmentCompatible() && is_plugin_active(plugin_basename(__FILE__))) {
             $this->deactivatePlugin();
 
-            $this->addAdminNotice('bad_environment', 'error', self::PLUGIN_NAME . ' has been deactivated. ' . $this->getEnvironmentMessage());
+            $this->addAdminNotice('bad_environment', 'error', self::PLUGIN_NAME.' has been deactivated. '.$this->getEnvironmentMessage());
         }
     }
 
@@ -216,9 +216,9 @@ class WC_Authorize_Net_Emulation_Loader
         if (! $this->isWordPressCompatible()) {
             $this->addAdminNotice('update_wordpress', 'error', sprintf(
                 '%s requires WordPress version %s or higher. Please %supdate WordPress &raquo;%s',
-                '<strong>' . self::PLUGIN_NAME . '</strong>',
+                '<strong>'.self::PLUGIN_NAME.'</strong>',
                 self::MINIMUM_WP_VERSION,
-                '<a href="' . esc_url(admin_url('update-core.php')) . '">',
+                '<a href="'.esc_url(admin_url('update-core.php')).'">',
                 '</a>'
             ));
         }
@@ -226,11 +226,11 @@ class WC_Authorize_Net_Emulation_Loader
         if (! $this->isWooCommerceCompatible()) {
             $this->addAdminNotice('update_woocommerce', 'error', sprintf(
                 '%1$s requires WooCommerce version %2$s or higher. Please %3$supdate WooCommerce%4$s to the latest version, or %5$sdownload the minimum required version &raquo;%6$s',
-                '<strong>' . self::PLUGIN_NAME . '</strong>',
+                '<strong>'.self::PLUGIN_NAME.'</strong>',
                 self::MINIMUM_WC_VERSION,
-                '<a href="' . esc_url(admin_url('update-core.php')) . '">',
+                '<a href="'.esc_url(admin_url('update-core.php')).'">',
                 '</a>',
-                '<a href="' . esc_url('https://downloads.wordpress.org/plugin/woocommerce.' . self::MINIMUM_WC_VERSION . '.zip') . '">',
+                '<a href="'.esc_url('https://downloads.wordpress.org/plugin/woocommerce.'.self::MINIMUM_WC_VERSION.'.zip').'">',
                 '</a>'
             ));
         }
@@ -244,7 +244,7 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @return bool
      */
-    private function pluginsCompatible(): bool
+    private function pluginsCompatible() : bool
     {
         return $this->isWordPressCompatible() && $this->isWooCommerceCompatible();
     }
@@ -257,7 +257,7 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @return bool
      */
-    private function isWordPressCompatible(): bool
+    private function isWordPressCompatible() : bool
     {
         if (! self::MINIMUM_WP_VERSION) {
             return true;
@@ -273,7 +273,7 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @return bool
      */
-    private function isWooCommerceCompatible(): bool
+    private function isWooCommerceCompatible() : bool
     {
         if (! self::MINIMUM_WC_VERSION) {
             return true;
@@ -306,11 +306,12 @@ class WC_Authorize_Net_Emulation_Loader
      * @param string $slug the slug for the notice
      * @param string $class the css class for the notice
      * @param string $message the notice message
+     *
      * @since 1.0.0
      */
     private function addAdminNotice(string $slug, string $class, string $message)
     {
-        $this->notices[ $slug ] = [
+        $this->notices[$slug] = [
             'class'   => $class,
             'message' => $message
         ];
@@ -326,7 +327,7 @@ class WC_Authorize_Net_Emulation_Loader
      */
     public function outputAdminNotices()
     {
-        foreach ((array) $this->notices as $notice_key => $notice) {
+        foreach ((array)$this->notices as $notice_key => $notice) {
             ?>
             <div class="<?php echo esc_attr($notice['class']); ?>">
                 <p><?php echo wp_kses($notice['message'], ['a' => ['href' => []]]); ?></p>
@@ -340,13 +341,14 @@ class WC_Authorize_Net_Emulation_Loader
      * Adds the Documentation URI header.
      *
      * @param string[] $headers original headers
+     *
      * @return string[]
      * @internal
      *
      * @since 1.0.0
      *
      */
-    public function addDocumentationHeader(array $headers): array
+    public function addDocumentationHeader(array $headers) : array
     {
         $headers[] = 'Documentation URI';
 
@@ -363,7 +365,7 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @return bool
      */
-    private function isEnvironmentCompatible(): bool
+    private function isEnvironmentCompatible() : bool
     {
         return version_compare(PHP_VERSION, self::MINIMUM_PHP_VERSION, '>=');
     }
@@ -376,7 +378,7 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @return string
      */
-    private function getEnvironmentMessage(): string
+    private function getEnvironmentMessage() : string
     {
         return sprintf('The minimum PHP version required for this plugin is %1$s. You are running %2$s.', self::MINIMUM_PHP_VERSION, PHP_VERSION);
     }
@@ -391,7 +393,7 @@ class WC_Authorize_Net_Emulation_Loader
      * @since 1.0.0
      *
      */
-    public static function getInstance(): WC_Authorize_Net_Emulation_Loader
+    public static function getInstance() : WC_Authorize_Net_Emulation_Loader
     {
         if (null === self::$instance) {
             self::$instance = new self();

@@ -32,4 +32,3 @@ function wc_authorize_net_emulation()
 {
     // TODO: returns plugin's instance
 }
-

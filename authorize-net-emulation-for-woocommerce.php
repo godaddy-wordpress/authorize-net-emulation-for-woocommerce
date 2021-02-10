@@ -6,7 +6,7 @@
  * Description: TODO: plugin description
  * Author: SkyVerge
  * Author URI: http://www.woocommerce.com
- * Version: 1.0.0
+ * Version: 1.0.0-dev.1
  * Text Domain: authorize-net-emulation-for-woocommerce
  * Domain Path: /i18n/languages/
  *
@@ -30,7 +30,7 @@ defined('ABSPATH') or exit;
 /**
  * The plugin loader class.
  *
- * @since 1.0.0
+ * @since 1.0.0-dev.1
  */
 class WC_Authorize_Net_Emulation_Loader
 {
@@ -62,7 +62,7 @@ class WC_Authorize_Net_Emulation_Loader
     /**
      * Constructs the class.
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      */
     protected function __construct()
     {
@@ -85,29 +85,29 @@ class WC_Authorize_Net_Emulation_Loader
     /**
      * Cloning instances is forbidden due to singleton pattern.
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      */
     public function __clone()
     {
-        _doing_it_wrong(__FUNCTION__, sprintf('You cannot clone instances of %s.', get_class($this)), '1.0.0');
+        _doing_it_wrong(__FUNCTION__, sprintf('You cannot clone instances of %s.', get_class($this)), '1.0.0-dev.1');
     }
 
 
     /**
      * Unserializing instances is forbidden due to singleton pattern.
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      */
     public function __wakeup()
     {
-        _doing_it_wrong(__FUNCTION__, sprintf('You cannot unserialize instances of %s.', get_class($this)), '1.0.0');
+        _doing_it_wrong(__FUNCTION__, sprintf('You cannot unserialize instances of %s.', get_class($this)), '1.0.0-dev.1');
     }
 
 
     /**
      * Initializes the plugin.
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      */
     public function initPlugin()
     {
@@ -128,7 +128,7 @@ class WC_Authorize_Net_Emulation_Loader
     /**
      * Loads the base framework classes.
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      */
     private function loadFramework()
     {
@@ -145,7 +145,7 @@ class WC_Authorize_Net_Emulation_Loader
     /**
      * Gets the framework version in namespace form.
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      *
      * @return string
      */
@@ -158,7 +158,7 @@ class WC_Authorize_Net_Emulation_Loader
     /**
      * Gets the framework version used by this plugin.
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      *
      * @return string
      */
@@ -175,7 +175,7 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @internal
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      */
     public function doActivationCheck()
     {
@@ -192,7 +192,7 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @internal
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      */
     public function checkEnvironment()
     {
@@ -209,7 +209,7 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @internal
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      */
     public function addPluginNotices()
     {
@@ -240,7 +240,7 @@ class WC_Authorize_Net_Emulation_Loader
     /**
      * Determines if the required plugins are compatible.
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      *
      * @return bool
      */
@@ -253,7 +253,7 @@ class WC_Authorize_Net_Emulation_Loader
     /**
      * Determines if the WordPress compatible.
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      *
      * @return bool
      */
@@ -269,7 +269,7 @@ class WC_Authorize_Net_Emulation_Loader
     /**
      * Determines if the WooCommerce compatible.
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      *
      * @return bool
      */
@@ -288,7 +288,7 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @internal
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      */
     protected function deactivatePlugin()
     {
@@ -307,7 +307,7 @@ class WC_Authorize_Net_Emulation_Loader
      * @param string $class the css class for the notice
      * @param string $message the notice message
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      */
     private function addAdminNotice(string $slug, string $class, string $message)
     {
@@ -323,7 +323,7 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * @internal
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      */
     public function outputAdminNotices()
     {
@@ -345,7 +345,7 @@ class WC_Authorize_Net_Emulation_Loader
      * @return string[]
      * @internal
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      *
      */
     public function addDocumentationHeader(array $headers) : array
@@ -361,7 +361,7 @@ class WC_Authorize_Net_Emulation_Loader
      *
      * Override this method to add checks for more than just the PHP version.
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      *
      * @return bool
      */
@@ -374,7 +374,7 @@ class WC_Authorize_Net_Emulation_Loader
     /**
      * Gets the message for display when the environment is incompatible with this plugin.
      *
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      *
      * @return string
      */
@@ -390,7 +390,7 @@ class WC_Authorize_Net_Emulation_Loader
      * Ensures only one instance can be loaded.
      *
      * @return WC_Authorize_Net_Emulation_Loader
-     * @since 1.0.0
+     * @since 1.0.0-dev.1
      *
      */
     public static function getInstance() : WC_Authorize_Net_Emulation_Loader

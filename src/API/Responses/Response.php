@@ -14,11 +14,11 @@
  *
  * Do not edit or add to this file if you wish to upgrade Authorize.Net Emulation for WooCommerce to newer
  * versions in the future. If you wish to customize Authorize.Net Emulation for WooCommerce for your
- * needs please refer to http://docs.woocommerce.com/document/authorize-net-cim/
+ * needs please refer to http://www.woocommerce.com/products/ for more information. TODO: docs url
  *
- * @author    SkyVerge
- * @copyright Copyright (c) 2013-2021, SkyVerge, Inc.
- * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
+ * @author      SkyVerge
+ * @copyright   Copyright (c) 2021, SkyVerge, Inc.
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
 namespace SkyVerge\WooCommerce\Authorize_Net\Emulation\API\Responses;
@@ -53,7 +53,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @throws Framework\SV_WC_Payment_Gateway_Exception
      */
-    public function __construct($raw_response)
+    public function __construct(string $raw_response)
     {
         $this->raw_response = $raw_response;
 
@@ -121,7 +121,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return bool
      */
-    public function transaction_approved()
+    public function transaction_approved() : bool
     {
         return self::TRANSACTION_APPROVED === $this->get_status_code();
     }
@@ -139,7 +139,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return bool
      */
-    public function transaction_held()
+    public function transaction_held() : bool
     {
         return self::TRANSACTION_HELD === $this->get_status_code();
     }
@@ -245,7 +245,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return bool
      */
-    public function csc_match()
+    public function csc_match() : bool
     {
         return self::CSC_MATCH === $this->get_csc_result();
     }
@@ -274,7 +274,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return string
      */
-    public function get_user_message()
+    public function get_user_message() : string
     {
         return '';
     }
@@ -286,7 +286,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return string payment type or null if not available
      */
-    public function get_payment_type()
+    public function get_payment_type() : string
     {
         return 'credit-card';
     }
@@ -298,7 +298,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return string
      */
-    public function to_string()
+    public function to_string() : string
     {
         return $this->raw_response;
     }
@@ -312,7 +312,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @return string
      */
-    public function to_string_safe()
+    public function to_string_safe() : string
     {
         // no sensitive data to mask in response
         return $this->raw_response;

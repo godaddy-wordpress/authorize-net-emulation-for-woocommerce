@@ -28,8 +28,7 @@
  *
  * @since 1.0.0-dev.1
  */
-function wc_authorize_net_emulation()
-{
+function wc_authorize_net_emulation() {
     // TODO: returns plugin's instance
 }
 

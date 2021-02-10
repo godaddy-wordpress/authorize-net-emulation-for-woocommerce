@@ -137,7 +137,6 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
         ];
 
         foreach ($responseFields as $field => $order) {
-
             $this->response->$field = (isset($response[$order])) ? $response[$order] : '';
         }
     }

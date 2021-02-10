@@ -1,0 +1,5 @@
+repos:
+  -   repo: git@github.com:gdcorp-partners/pre-commit-hooks.git
+      rev: HEAD
+      hooks:
+        -   id: php-cs-fixer

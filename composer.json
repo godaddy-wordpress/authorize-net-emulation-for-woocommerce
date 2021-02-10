@@ -10,26 +10,10 @@
     {
       "type": "vcs",
       "url": "git@github.com:skyverge/wc-plugin-framework.git"
-    },
-    {
-      "type": "vcs",
-      "url": "git@github.com:skyverge/php-coding-standards.git"
     }
   ],
-  "scripts": {
-    "phpcs": [
-      "phpcs -s -p"
-    ],
-    "phpcs-diff": [
-      "git diff origin/master > diff.txt",
-      "phpcs -q --report=json > phpcs.json || true",
-      "diffFilter --phpcsStrict diff.txt phpcs.json 100"
-    ]
-  },
   "require": {
+    "php": ">=7.0 <9.0",
     "skyverge/wc-plugin-framework": "5.10.3"
-  },
-  "require-dev": {
-    "skyverge/php-coding-standards": "dev-master"
   }
 }

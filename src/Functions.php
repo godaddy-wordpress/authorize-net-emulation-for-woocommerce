@@ -30,7 +30,6 @@
  */
 function wc_authorize_net_emulation()
 {
-
-    return \SkyVerge\WooCommerce\Authorize_Net\Emulation\Plugin::instance();
+    // TODO: returns plugin's instance
 }
 

@@ -38,6 +38,7 @@ use SkyVerge\WooCommerce\PluginFramework\v5_10_3 as Framework;
  */
 class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 
+
     /**
      * Auth/Capture transaction type
      *
@@ -438,4 +439,6 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 
         return [];
     }
+
+
 }

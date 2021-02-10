@@ -29,19 +29,49 @@ use SkyVerge\WooCommerce\PluginFramework\v5_10_3 as Framework;
 
 class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framework\SV_WC_Payment_Gateway_API_Authorization_Response
 {
-    /** approved transaction response code */
+    /**
+     * Approved transaction response code.
+     *
+     * @since 1.0.0-dev.1
+     *
+     * @var string
+     */
     const TRANSACTION_APPROVED = '1';
 
-    /** held for review transaction response code */
+    /**
+     * Held for review transaction response code.
+     *
+     * @since 1.0.0-dev.1
+     *
+     * @var string
+     */
     const TRANSACTION_HELD = '4';
 
-    /** CSC match code */
+    /**
+     * CSC match code
+     *
+     * @since 1.0.0-dev.1
+     *
+     * @var string
+     */
     const CSC_MATCH = 'M';
 
-    /** @var string raw response string */
-    protected $raw_response;
+    /**
+     * Raw response string.
+     *
+     * @since 1.0.0-dev.1
+     *
+     * @var string
+     */
+    protected $rawResponse;
 
-    /** @var \stdClass parsed response object */
+    /**
+     * Parsed response object.
+     *
+     * @since 1.0.0-dev.1
+     *
+     * @var \stdClass
+     */
     protected $response;
 
     /**
@@ -49,15 +79,15 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @since 1.0.0-dev.1
      *
-     * @param string $raw_response raw response data
+     * @param string $rawResponse raw response data
      *
      * @throws Framework\SV_WC_Payment_Gateway_Exception
      */
-    public function __construct(string $raw_response)
+    public function __construct(string $rawResponse)
     {
-        $this->raw_response = $raw_response;
+        $this->rawResponse = $rawResponse;
 
-        $this->parse_response();
+        $this->parseResponse();
     }
 
     /**
@@ -67,16 +97,16 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      *
      * @throws Framework\SV_WC_Payment_Gateway_Exception
      */
-    protected function parse_response()
+    protected function parseResponse()
     {
         // adjust response based on our hybrid delimiter :|: (delimiter = | encapsulation = :)
         // remove the leading encap character and add a trailing delimiter/encap character
         // so explode works correctly -- response string starts and ends with an encapsulation
         // character)
-        $this->raw_response = ltrim($this->raw_response, ':').'|:';
+        $this->rawResponse = ltrim($this->rawResponse, ':').'|:';
 
         // parse response
-        $response = explode(':|:', $this->raw_response);
+        $response = explode(':|:', $this->rawResponse);
 
         if (empty($response)) {
             throw new Framework\SV_WC_Payment_Gateway_Exception(__('Could not parse direct response.', 'woocommerce-gateway-authorize-net-cim'));
@@ -89,7 +119,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 
         // response fields are URL encoded, but we currently do not use any fields
         // (e.g. billing/shipping details) that would be affected by that
-        $response_fields = [
+        $responseFields = [
             'response_code'        => 1,
             'response_subcode'     => 2,
             'response_reason_code' => 3,
@@ -106,7 +136,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
             'card_type'            => 52,
         ];
 
-        foreach ($response_fields as $field => $order) {
+        foreach ($responseFields as $field => $order) {
 
             $this->response->$field = (isset($response[$order])) ? $response[$order] : '';
         }
@@ -300,7 +330,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
      */
     public function to_string() : string
     {
-        return $this->raw_response;
+        return $this->rawResponse;
     }
 
     /**
@@ -315,6 +345,6 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
     public function to_string_safe() : string
     {
         // no sensitive data to mask in response
-        return $this->raw_response;
+        return $this->rawResponse;
     }
 }

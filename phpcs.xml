@@ -7,7 +7,6 @@
     <exclude-pattern>*/i18n/*</exclude-pattern>
     <exclude-pattern>*/lib/*</exclude-pattern>
     <exclude-pattern>*/vendor/*</exclude-pattern>
-    <exclude-pattern>*/woo-includes/*</exclude-pattern>
 
     <rule ref="SkyVerge_PHP_Base" />
 

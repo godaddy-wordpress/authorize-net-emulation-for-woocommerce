@@ -64,6 +64,80 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
                 'supports'    => [ self::FEATURE_CAPTURE_CHARGE ],
             ]
         );
+
+        $this->setup_hooks();
+    }
+
+
+    /**
+     * Sets up the action & filter hooks.
+     *
+     * @since 1.0.0
+     */
+    private function setup_hooks() {
+
+        if ( ! strncmp( get_option( 'woocommerce_default_country' ), 'US:', 3 ) ) {
+
+            // remove blank arrays from the state fields, otherwise it's hidden
+            add_action( 'woocommerce_states', array( $this, 'remove_empty_state_arrays' ), 1 );
+
+            //  require the billing fields
+            add_filter( 'woocommerce_get_country_locale', array( $this, 'require_billing_fields' ), 100 );
+        }
+    }
+
+
+    /**
+     * Removes blank State array values from countries.
+     *
+     * Before requiring all billing fields, the state array has to be removed of blank arrays, otherwise
+     * the field is hidden.
+     *
+     * @internal
+     *
+     * @see WC_Countries::__construct()
+     *
+     * @since 1.0.0-dev.1
+     *
+     * @param array $countries the available countries
+     * @return array the available countries
+     */
+    public function remove_empty_state_arrays( $countries ) {
+
+        foreach ( $countries as $country_code => $states ) {
+
+            if ( is_array( $countries[ $country_code ] ) && empty( $countries[ $country_code ] ) ) {
+                $countries[ $country_code ] = null;
+            }
+        }
+
+        return $countries;
+    }
+
+
+    /**
+     * Sets all state billing fields as required.
+     *
+     * This is hooked in when using a European payment processor.
+     *
+     * @internal
+     *
+     * @since 1.0.0
+     *
+     * @param array $locales countries and locale-specific address field info
+     * @return array
+     */
+    public function require_billing_fields( $locales ) {
+
+        foreach ( $locales as $country_code => $fields ) {
+
+            if ( isset( $locales[ $country_code ]['state']['required'] ) ) {
+                $locales[ $country_code ]['state']['required'] = true;
+                $locales[ $country_code ]['state']['label']    = $this->get_state_label( $country_code );
+            }
+        }
+
+        return $locales;
     }
 
 

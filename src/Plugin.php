@@ -60,6 +60,9 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
             self::VERSION,
             [
                 'text_domain' => 'authorize-net-emulation-for-woocommerce',
+                'gateways'    => [
+                    Gateways\CreditCard::ID => Gateways\CreditCard::class,
+                ],
                 'require_ssl' => true,
                 'supports'    => [ self::FEATURE_CAPTURE_CHARGE ],
             ]

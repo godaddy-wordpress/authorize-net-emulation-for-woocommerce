@@ -82,10 +82,10 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
         if ( ! strncmp( get_option( 'woocommerce_default_country' ), 'US:', 3 ) ) {
 
             // remove blank arrays from the state fields, otherwise it's hidden
-            add_action( 'woocommerce_states', array( $this, 'remove_empty_state_arrays' ), 1 );
+            add_action( 'woocommerce_states', [ $this, 'remove_empty_state_arrays' ], 1 );
 
             //  require the billing fields
-            add_filter( 'woocommerce_get_country_locale', array( $this, 'require_billing_fields' ), 100 );
+            add_filter( 'woocommerce_get_country_locale', [ $this, 'require_billing_fields' ], 100 );
         }
     }
 

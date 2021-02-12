@@ -47,6 +47,15 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
     /** @var Plugin single instance of this plugin */
     protected static $instance;
 
+    /**
+     * Credit Card gateway ID.
+     *
+     * @since 1.0.0-dev.1
+     *
+     * @var string
+     */
+    const CREDIT_CARD_GATEWAY_ID = 'authorize_net_aim_emulation';
+
 
     /**
      * Constructs the class.
@@ -61,7 +70,7 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
             [
                 'text_domain' => 'authorize-net-emulation-for-woocommerce',
                 'gateways'    => [
-                    Gateways\CreditCard::ID => Gateways\CreditCard::class,
+                    self::CREDIT_CARD_GATEWAY_ID => Gateways\CreditCard::class,
                 ],
                 'require_ssl' => true,
                 'supports'    => [ self::FEATURE_CAPTURE_CHARGE ],

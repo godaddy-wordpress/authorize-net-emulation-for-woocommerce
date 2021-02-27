@@ -4,6 +4,7 @@
 
     <file>.</file>
 
+    <exclude-pattern>src/Parsedown.php</exclude-pattern>
     <exclude-pattern>*/i18n/*</exclude-pattern>
     <exclude-pattern>*/lib/*</exclude-pattern>
     <exclude-pattern>*/vendor/*</exclude-pattern>

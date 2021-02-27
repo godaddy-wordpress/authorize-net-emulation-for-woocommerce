@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "824dcfcf6187727f9ef9ec14274d3471",
+    "content-hash": "071a4f3fed1892a398f6f34229ce171c",
     "packages": [
         {
             "name": "skyverge/wc-plugin-framework",
@@ -105,29 +105,28 @@
         },
         {
             "name": "exussum12/coverage-checker",
-            "version": "0.11.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/exussum12/coverageChecker.git",
-                "reference": "ad0eb95b255bb9d18723f87146750b1a69e4ee16"
+                "reference": "495c9cb512cdb057cd2c63e6bda0efee4838bb3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/exussum12/coverageChecker/zipball/ad0eb95b255bb9d18723f87146750b1a69e4ee16",
-                "reference": "ad0eb95b255bb9d18723f87146750b1a69e4ee16",
+                "url": "https://api.github.com/repos/exussum12/coverageChecker/zipball/495c9cb512cdb057cd2c63e6bda0efee4838bb3a",
+                "reference": "495c9cb512cdb057cd2c63e6bda0efee4838bb3a",
                 "shasum": ""
             },
             "require": {
+                "ext-json": "*",
+                "ext-xmlreader": "*",
                 "nikic/php-parser": "^3.1||^4.0",
-                "php": ">=5.5"
+                "php": ">=7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.7"
+                "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
             },
             "bin": [
-                "bin/phpunitDiffFilter",
-                "bin/phpcsDiffFilter",
-                "bin/phpmdDiffFilter",
                 "bin/diffFilter"
             ],
             "type": "library",
@@ -148,7 +147,7 @@
                 }
             ],
             "description": "Allows checking the code coverage of a single pull request",
-            "time": "2019-04-17T05:12:24+00:00"
+            "time": "2020-10-27T22:49:24+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -499,7 +498,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "skyverge/php-coding-standards": 20
+        "skyverge/php-coding-standards": 20,
+        "exussum12/coverage-checker": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

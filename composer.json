@@ -31,6 +31,6 @@
   },
   "require-dev": {
     "skyverge/php-coding-standards": "dev-master",
-    "exussum12/coverage-checker": "^0.11.2"
+    "exussum12/coverage-checker": "dev-master"
   }
 }

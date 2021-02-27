@@ -267,8 +267,7 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 	 */
 	public function get_support_url(): string {
 
-		// TODO: Replace with the support URL once it's available. {IT 2021-02-10}
-		return '';
+		return 'https://woocommerce.com/my-account/marketplace-ticket-form/';
 	}
 
 
@@ -283,8 +282,7 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 	 */
 	public function get_sales_page_url(): string {
 
-		// TODO: Replace with the sales page URL once it's available. {IT 2021-02-10}
-		return '';
+		return 'https://docs.woocommerce.com/document/authorize-net/#emulation-mode';
 	}
 
 

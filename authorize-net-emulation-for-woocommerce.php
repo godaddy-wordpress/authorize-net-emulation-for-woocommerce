@@ -3,7 +3,7 @@
  * Plugin Name: Authorize.Net Emulation for WooCommerce
  * Plugin URI: http://www.woocommerce.com/products/ TODO: product URL
  * Documentation URI: https://docs.woocommerce.com/document/authorize-net/#emulation-mode
- * Description: TODO: plugin description
+ * Description: Allow customers to securely pay using their credit cards via a payment processor that supports Authorize.Net Emulation.
  * Author: SkyVerge
  * Author URI: http://www.woocommerce.com
  * Version: 1.0.0-dev.1

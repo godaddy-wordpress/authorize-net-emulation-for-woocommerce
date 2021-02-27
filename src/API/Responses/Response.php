@@ -111,7 +111,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 		$response = explode( ':|:', $this->raw_response );
 
 		if ( empty( $response ) ) {
-			throw new Framework\SV_WC_Payment_Gateway_Exception( __( 'Could not parse direct response.', 'woocommerce-gateway-authorize-net-cim' ) );
+			throw new Framework\SV_WC_Payment_Gateway_Exception( __( 'Could not parse direct response.', 'authorize-net-emulation-for-woocommerce' ) );
 		}
 
 		// offset array by 1 to match Authorize.Net's order, mainly for readability

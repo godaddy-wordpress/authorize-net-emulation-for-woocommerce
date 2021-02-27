@@ -5,7 +5,7 @@
  * Documentation URI: https://docs.woocommerce.com/document/authorize-net/#emulation-mode
  * Description: Adds the Authorize.Net Emulation Payment Gateway to your WooCommerce site, allowing customers to securely pay using their credit cards via a payment processor that supports Authorize.Net Emulation.
  * Author: SkyVerge
- * Author URI: http://www.woocommerce.com
+ * Author URI: http://www.skyverge.com/
  * Version: 1.0.0-dev.1
  * Text Domain: authorize-net-emulation-for-woocommerce
  * Domain Path: /i18n/languages/

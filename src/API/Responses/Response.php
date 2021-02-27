@@ -14,7 +14,7 @@
  *
  * Do not edit or add to this file if you wish to upgrade Authorize.Net Emulation for WooCommerce to newer
  * versions in the future. If you wish to customize Authorize.Net Emulation for WooCommerce for your
- * needs please refer to http://www.woocommerce.com/products/ for more information. TODO: docs url
+ * needs please refer to https://docs.woocommerce.com/document/authorize-net/#emulation-mode for more information.
  *
  * @author      SkyVerge
  * @copyright   Copyright (c) 2021, SkyVerge, Inc.

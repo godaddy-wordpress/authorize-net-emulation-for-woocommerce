@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Authorize.Net Emulation for WooCommerce
  * Plugin URI: http://www.woocommerce.com/products/ TODO: product URL
- * Documentation URI: http://www.woocommerce.com/products/ TODO: documentation URL
+ * Documentation URI: https://docs.woocommerce.com/document/authorize-net/#emulation-mode
  * Description: TODO: plugin description
  * Author: SkyVerge
  * Author URI: http://www.woocommerce.com

@@ -23,6 +23,7 @@
 
 namespace SkyVerge\WooCommerce\Authorize_Net\Emulation;
 
+use SkyVerge\WooCommerce\Authorize_Net\Emulation\Lifecycle;
 use SkyVerge\WooCommerce\PluginFramework\v5_10_3 as Framework;
 
 defined( 'ABSPATH' ) or exit;
@@ -333,6 +334,20 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 		}
 
 		return self::$instance;
+	}
+
+
+	/** Lifecycle methods *****/
+
+
+	/**
+	 * Initializes the lifecycle handler.
+	 *
+	 * @since 1.0.0-dev.1
+	 */
+	protected function init_lifecycle_handler() {
+
+		$this->lifecycle_handler = new Lifecycle( $this );
 	}
 
 

@@ -11,7 +11,7 @@ Allow customers to securely pay using their credit cards via a payment processor
 
 == Description ==
 
-Adds the Authorize.Net Emulation Payment Gateway to your WooCommerce site to allow customers to securely pay using their credit cards via a payment processor that supports Authorize.Net Emulation.
+Adds the Authorize.Net Emulation Payment Gateway to your WooCommerce site, allowing customers to securely pay using their credit cards via a payment processor that supports Authorize.Net Emulation.
 
 == Installation ==
 

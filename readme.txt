@@ -1,31 +1,25 @@
 === Authorize.Net Emulation for WooCommerce ===
-Contributors: TODO
-Tags: TODO
+Contributors: SkyVerge
+Tags: woocommerce
 Requires at least: 5.2
 Tested up to: 5.6
 Stable tag: 1.0.0-dev.1
-License: TODO
-License URI: TODO
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-TODO: brief descriptions
+Allow customers to securely pay using their credit cards via a payment processor that supports Authorize.Net Emulation.
 
 == Description ==
 
-> **Requires** WooCommerce 4.0+
-
-TODO: lengthy description
+Adds the Authorize.Net Emulation Payment Gateway to your WooCommerce site to allow customers to securely pay using their credit cards via a payment processor that supports Authorize.Net Emulation.
 
 == Installation ==
 
-TODO: installation instructions
-
-== Frequently Asked Questions ==
-
-TODO: FAQ
-
-== Screenshots ==
-
-TODO: Screenshots
+TODO: add link to public GitHub repository URL
+1. Download the plugin zip file from GitHub
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Click the 'Configure' action link under Authorize.Net Emulation for WooCommerce
+4. Configure the [Authorize.Net emulator settings](https://docs.woocommerce.com/document/authorize-net/#emulation-mode)
 
 == Changelog ==
 

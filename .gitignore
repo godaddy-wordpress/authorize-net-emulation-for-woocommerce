@@ -10,6 +10,9 @@
 #
 #####################################################################
 
+# macOS
+.DS_Store
+
 # IDEs
 .project/
 .settings/
@@ -26,6 +29,9 @@ vendor
 
 # Ignore test coverage output
 coverage
+
+# Ignore build dir
+build
 
 # Ignore local dev config
 .env

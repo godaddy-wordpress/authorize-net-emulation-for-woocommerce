@@ -287,6 +287,21 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 
 
 	/**
+	 * Gets the plugin reviews page URL.
+	 *
+	 * We don't want to show a Review action for this plugin.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string
+	 */
+	public function get_reviews_url() {
+
+		return '';
+	}
+
+
+	/**
 	 * Returns the plugin name, localized.
 	 *
 	 * @see SV_WC_Plugin::get_plugin_name()

@@ -19,7 +19,6 @@
  * @copyright Copyright (c) 2021, SkyVerge, Inc.
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  *
- * Woo: 99999:00000000000000000000000000000000 TODO: updater keys
  * WC requires at least: 3.5
  * WC tested up to: 5.0.0
  */

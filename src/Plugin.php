@@ -334,4 +334,6 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 
 		return self::$instance;
 	}
+
+
 }

@@ -305,6 +305,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 
 	/** No-op methods *************************************************************************************************/
 
+
 	/**
 	 * No-op, as emulation does not support refund transactions
 	 *

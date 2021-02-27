@@ -166,7 +166,9 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 		];
 	}
 
+
 	/** Request Helper Methods ******************************************************/
+
 
 	/**
 	 * Creates the transaction XML, this handles all transaction types and both credit card/eCheck transactions
@@ -338,7 +340,9 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 		return $this->request_data;
 	}
 
+
 	/** API Helper Methods ******************************************************/
+
 
 	/**
 	 * Gets the string representation of the request.

@@ -47,6 +47,9 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
     /** @var Plugin single instance of this plugin */
     protected static $instance;
 
+    /** @var Updater updater instance */
+    private $updater;
+
     /**
      * Credit Card gateway ID.
      *
@@ -95,6 +98,23 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 
             //  require the billing fields
             add_filter( 'woocommerce_get_country_locale', [ $this, 'require_billing_fields' ], 100 );
+        }
+
+        // load plugin updater
+        add_action( 'admin_init', [ $this, 'auto_updater' ], 0 );
+    }
+
+
+    /**
+     * Loads the auto updater.
+     *
+     * @since 1.0.0
+     */
+    public function auto_updater() {
+
+        if ( null === $this->updater ) {
+            // Setup the updater
+            $this->updater = new Updater();
         }
     }
 

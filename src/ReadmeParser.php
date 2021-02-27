@@ -36,141 +36,141 @@ defined( 'ABSPATH' ) or exit;
 class ReadmeParser {
 
 
-    /** @var string */
-    private $contents;
+	/** @var string */
+	private $contents;
 
 
-    /** @var array */
-    private $results = [];
+	/** @var array */
+	private $results = [];
 
 
-    /** @var Parsedown markdown parser instance */
-    private $parsedown;
+	/** @var Parsedown markdown parser instance */
+	private $parsedown;
 
 
-    /**
-     * Construct the class.
-     *
-     * @since 1.0.0-dev.1
-     *
-     * @param string $contents
-     */
-    public function __construct( string $contents ) {
+	/**
+	 * Construct the class.
+	 *
+	 * @since 1.0.0-dev.1
+	 *
+	 * @param string $contents
+	 */
+	public function __construct( string $contents ) {
 
-        $this->contents  = $contents;
-        $this->parsedown = new Parsedown();
-    }
-
-
-    /**
-     * Parses the readme file.
-     *
-     * @since 1.0.0
-     *
-     * @return array
-     */
-    public function parse(): array {
-
-        $this->trim_file_contents();
-        $this->extract_plugin_details();
-        $this->parse_sections();
-
-        return $this->results;
-    }
+		$this->contents  = $contents;
+		$this->parsedown = new Parsedown();
+	}
 
 
-    /**
-     * Trims readme file contents.
-     *
-     * @since 1.0.0
-     */
-    private function trim_file_contents() {
+	/**
+	 * Parses the readme file.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array
+	 */
+	public function parse(): array {
 
-        $this->contents = trim( str_replace( [ "\r\n", "\r" ], "\n", $this->contents ) );
+		$this->trim_file_contents();
+		$this->extract_plugin_details();
+		$this->parse_sections();
 
-        if ( 0 === strpos( $this->contents, "\xEF\xBB\xBF" ) ) {
-            $this->contents = substr( $this->contents, 3 );
-        }
-    }
-
-
-    /**
-     * Extracts plugin details from the readme file.
-     *
-     * @since 1.0.0
-     */
-    private function extract_plugin_details() {
-
-        if ( preg_match( '|Requires at least:(.*)|i', $this->contents, $requires ) ) {
-            $this->results['requires'] = $this->sanitize_text( $requires[1] );
-        }
-
-        if ( preg_match( '|Tested up to:(.*)|i', $this->contents, $tested ) ) {
-            $this->results['tested'] = $this->sanitize_text( $tested[1] );
-        }
-    }
+		return $this->results;
+	}
 
 
-    /**
-     * Parses readme sections.
-     *
-     * @since 1.0.0
-     */
-    private function parse_sections() {
+	/**
+	 * Trims readme file contents.
+	 *
+	 * @since 1.0.0
+	 */
+	private function trim_file_contents() {
 
-        $this->results['sections'] = [];
+		$this->contents = trim( str_replace( [ "\r\n", "\r" ], "\n", $this->contents ) );
 
-        $parts = preg_split( '/^[\s]*==[\s]*(.+?)[\s]*==/m', $this->contents, - 1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
-        $count = count( $parts );
-
-        // if there are less than 3 parts, it means the readme contains no sections at all or only the main plugin section
-        if ( $count < 3 ) {
-            return;
-        }
-
-        // start at 3 - skip the first 2 results, as these will be the plugin name and general details which we've already extracted
-        for ( $i = 3; $i <= $count; $i += 2 ) {
-            $title = $this->sanitize_text( $parts[ $i - 1 ] );
-            $key   = str_replace( ' ', '_', strtolower( $title ) );
-
-            if ( 'frequently_asked_questions' === $key ) {
-                $key = 'faq';
-            }
-
-            $this->results['sections'][ $key ] = $this->parse_section_content( $parts[ $i ] );
-        }
-    }
+		if ( 0 === strpos( $this->contents, "\xEF\xBB\xBF" ) ) {
+			$this->contents = substr( $this->contents, 3 );
+		}
+	}
 
 
-    /**
-     * Parses section content into HTML
-     *
-     * @since 1.0.0
-     *
-     * @param string $text
-     * @return string
-     */
-    private function parse_section_content( string $text ): string {
+	/**
+	 * Extracts plugin details from the readme file.
+	 *
+	 * @since 1.0.0
+	 */
+	private function extract_plugin_details() {
 
-        // replace =Title= with <h4>Title</h4> (not part of markdown)
-        $text = preg_replace( '/^[\s]*=[\s]+(.+?)[\s]+=/m', '<h4>$1</h4>', $text );
+		if ( preg_match( '|Requires at least:(.*)|i', $this->contents, $requires ) ) {
+			$this->results['requires'] = $this->sanitize_text( $requires[1] );
+		}
 
-        return $this->parsedown->text( $text );
-    }
+		if ( preg_match( '|Tested up to:(.*)|i', $this->contents, $tested ) ) {
+			$this->results['tested'] = $this->sanitize_text( $tested[1] );
+		}
+	}
 
 
-    /**
-     * Performs basic sanitation on given text.
-     *
-     * @since 1.0.0
-     *
-     * @param string $text
-     * @return string
-     */
-    private function sanitize_text( string $text ): string {
+	/**
+	 * Parses readme sections.
+	 *
+	 * @since 1.0.0
+	 */
+	private function parse_sections() {
 
-        return trim( esc_html( strip_tags( $text ) ) );
-    }
+		$this->results['sections'] = [];
+
+		$parts = preg_split( '/^[\s]*==[\s]*(.+?)[\s]*==/m', $this->contents, - 1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
+		$count = count( $parts );
+
+		// if there are less than 3 parts, it means the readme contains no sections at all or only the main plugin section
+		if ( $count < 3 ) {
+			return;
+		}
+
+		// start at 3 - skip the first 2 results, as these will be the plugin name and general details which we've already extracted
+		for ( $i = 3; $i <= $count; $i += 2 ) {
+			$title = $this->sanitize_text( $parts[ $i - 1 ] );
+			$key   = str_replace( ' ', '_', strtolower( $title ) );
+
+			if ( 'frequently_asked_questions' === $key ) {
+				$key = 'faq';
+			}
+
+			$this->results['sections'][ $key ] = $this->parse_section_content( $parts[ $i ] );
+		}
+	}
+
+
+	/**
+	 * Parses section content into HTML
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $text
+	 * @return string
+	 */
+	private function parse_section_content( string $text ): string {
+
+		// replace =Title= with <h4>Title</h4> (not part of markdown)
+		$text = preg_replace( '/^[\s]*=[\s]+(.+?)[\s]+=/m', '<h4>$1</h4>', $text );
+
+		return $this->parsedown->text( $text );
+	}
+
+
+	/**
+	 * Performs basic sanitation on given text.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $text
+	 * @return string
+	 */
+	private function sanitize_text( string $text ): string {
+
+		return trim( esc_html( strip_tags( $text ) ) );
+	}
 
 
 }

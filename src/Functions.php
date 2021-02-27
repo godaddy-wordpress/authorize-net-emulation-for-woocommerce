@@ -32,5 +32,5 @@ use SkyVerge\WooCommerce\Authorize_Net\Emulation\Plugin;
  */
 function wc_authorize_net_emulation(): Plugin {
 
-    return Plugin::instance();
+	return Plugin::instance();
 }

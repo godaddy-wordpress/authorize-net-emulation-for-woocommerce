@@ -35,303 +35,303 @@ defined( 'ABSPATH' ) or exit;
 class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 
 
-    /** plugin version number */
-    const VERSION = '1.0.0';
+	/** plugin version number */
+	const VERSION = '1.0.0';
 
-    /** plugin id */
-    const PLUGIN_ID = 'authorize_net_emulation';
+	/** plugin id */
+	const PLUGIN_ID = 'authorize_net_emulation';
 
-    /** plugin meta prefix */
-    const PLUGIN_PREFIX = 'authorize_net_emulation_';
+	/** plugin meta prefix */
+	const PLUGIN_PREFIX = 'authorize_net_emulation_';
 
-    /** @var Plugin single instance of this plugin */
-    protected static $instance;
+	/** @var Plugin single instance of this plugin */
+	protected static $instance;
 
-    /** @var Updater updater instance */
-    private $updater;
+	/** @var Updater updater instance */
+	private $updater;
 
-    /**
-     * Credit Card gateway ID.
-     *
-     * @since 1.0.0-dev.1
-     *
-     * @var string
-     */
-    const CREDIT_CARD_GATEWAY_ID = 'authorize_net_aim_emulation';
-
-
-    /**
-     * Constructs the class.
-     *
-     * @since 1.0.0
-     */
-    public function __construct() {
-
-        parent::__construct(
-            self::PLUGIN_ID,
-            self::VERSION,
-            [
-                'text_domain' => 'authorize-net-emulation-for-woocommerce',
-                'gateways'    => [
-                    self::CREDIT_CARD_GATEWAY_ID => Gateways\CreditCard::class,
-                ],
-                'require_ssl' => true,
-                'supports'    => [ self::FEATURE_CAPTURE_CHARGE ],
-            ]
-        );
-
-        $this->setup_hooks();
-    }
+	/**
+	 * Credit Card gateway ID.
+	 *
+	 * @since 1.0.0-dev.1
+	 *
+	 * @var string
+	 */
+	const CREDIT_CARD_GATEWAY_ID = 'authorize_net_aim_emulation';
 
 
-    /**
-     * Sets up the action & filter hooks.
-     *
-     * @since 1.0.0
-     */
-    private function setup_hooks() {
+	/**
+	 * Constructs the class.
+	 *
+	 * @since 1.0.0
+	 */
+	public function __construct() {
 
-        if ( ! strncmp( get_option( 'woocommerce_default_country' ), 'US:', 3 ) ) {
+		parent::__construct(
+			self::PLUGIN_ID,
+			self::VERSION,
+			[
+				'text_domain' => 'authorize-net-emulation-for-woocommerce',
+				'gateways'    => [
+					self::CREDIT_CARD_GATEWAY_ID => Gateways\CreditCard::class,
+				],
+				'require_ssl' => true,
+				'supports'    => [ self::FEATURE_CAPTURE_CHARGE ],
+			]
+		);
 
-            // remove blank arrays from the state fields, otherwise it's hidden
-            add_action( 'woocommerce_states', [ $this, 'remove_empty_state_arrays' ], 1 );
-
-            //  require the billing fields
-            add_filter( 'woocommerce_get_country_locale', [ $this, 'require_billing_fields' ], 100 );
-        }
-
-        // load plugin updater
-        add_action( 'admin_init', [ $this, 'auto_updater' ], 0 );
-    }
-
-
-    /**
-     * Loads the auto updater.
-     *
-     * @since 1.0.0
-     */
-    public function auto_updater() {
-
-        if ( null === $this->updater ) {
-            // Setup the updater
-            $this->updater = new Updater();
-        }
-    }
+		$this->setup_hooks();
+	}
 
 
-    /**
-     * Removes blank State array values from countries.
-     *
-     * Before requiring all billing fields, the state array has to be removed of blank arrays, otherwise
-     * the field is hidden.
-     *
-     * @internal
-     *
-     * @see WC_Countries::__construct()
-     *
-     * @since 1.0.0-dev.1
-     *
-     * @param array $countries the available countries
-     * @return array the available countries
-     */
-    public function remove_empty_state_arrays( $countries ) {
+	/**
+	 * Sets up the action & filter hooks.
+	 *
+	 * @since 1.0.0
+	 */
+	private function setup_hooks() {
 
-        foreach ( $countries as $country_code => $states ) {
+		if ( ! strncmp( get_option( 'woocommerce_default_country' ), 'US:', 3 ) ) {
 
-            if ( is_array( $countries[ $country_code ] ) && empty( $countries[ $country_code ] ) ) {
-                $countries[ $country_code ] = null;
-            }
-        }
+			// remove blank arrays from the state fields, otherwise it's hidden
+			add_action( 'woocommerce_states', [ $this, 'remove_empty_state_arrays' ], 1 );
 
-        return $countries;
-    }
+			//  require the billing fields
+			add_filter( 'woocommerce_get_country_locale', [ $this, 'require_billing_fields' ], 100 );
+		}
+
+		// load plugin updater
+		add_action( 'admin_init', [ $this, 'auto_updater' ], 0 );
+	}
 
 
-    /**
-     * Sets all state billing fields as required.
-     *
-     * This is hooked in when using a European payment processor.
-     *
-     * @internal
-     *
-     * @since 1.0.0
-     *
-     * @param array $locales countries and locale-specific address field info
-     * @return array
-     */
-    public function require_billing_fields( $locales ) {
+	/**
+	 * Loads the auto updater.
+	 *
+	 * @since 1.0.0
+	 */
+	public function auto_updater() {
 
-        foreach ( $locales as $country_code => $fields ) {
-
-            if ( isset( $locales[ $country_code ]['state']['required'] ) ) {
-                $locales[ $country_code ]['state']['required'] = true;
-                $locales[ $country_code ]['state']['label']    = $this->get_state_label( $country_code );
-            }
-        }
-
-        return $locales;
-    }
+		if ( null === $this->updater ) {
+			// Setup the updater
+			$this->updater = new Updater();
+		}
+	}
 
 
-    /**
-     * Gets a label for states that don't have one set by WooCommerce.
-     *
-     * @param string $country_code the 2-letter country code for the billing country
-     * @return string the label for the "billing state" field at checkout
-     * @since 1.0.0
-     *
-     */
-    protected function get_state_label( string $country_code ): string {
+	/**
+	 * Removes blank State array values from countries.
+	 *
+	 * Before requiring all billing fields, the state array has to be removed of blank arrays, otherwise
+	 * the field is hidden.
+	 *
+	 * @internal
+	 *
+	 * @see WC_Countries::__construct()
+	 *
+	 * @since 1.0.0-dev.1
+	 *
+	 * @param array $countries the available countries
+	 * @return array the available countries
+	 */
+	public function remove_empty_state_arrays( $countries ) {
 
-        switch ( $country_code ) {
+		foreach ( $countries as $country_code => $states ) {
 
-            case 'AF':
-            case 'AT':
-            case 'BI':
-            case 'KR':
-            case 'PL':
-            case 'PT':
-            case 'LK':
-            case 'SE':
-            case 'VN':
-                $label = __( 'Province', 'authorize-net-emulation-for-woocommerce' );
-                break;
+			if ( is_array( $countries[ $country_code ] ) && empty( $countries[ $country_code ] ) ) {
+				$countries[ $country_code ] = null;
+			}
+		}
 
-            case 'AX':
-            case 'YT':
-                $label = __( 'Island', 'authorize-net-emulation-for-woocommerce' );
-                break;
-
-            case 'DE':
-                $label = __( 'State', 'authorize-net-emulation-for-woocommerce' );
-                break;
-
-            case 'EE':
-            case 'NO':
-                $label = __( 'County', 'authorize-net-emulation-for-woocommerce' );
-                break;
-
-            case 'FI':
-            case 'IL':
-            case 'LB':
-                $label = __( 'District', 'authorize-net-emulation-for-woocommerce' );
-                break;
-
-            default:
-                $label = __( 'Region', 'authorize-net-emulation-for-woocommerce' );
-        }
-
-        return $label;
-    }
+		return $countries;
+	}
 
 
-    /**
-     * Determine if TLS v1.2 is required for API requests.
-     *
-     * @see SV_WC_Plugin::require_tls_1_2()
-     *
-     * @since 1.0.0
-     *
-     * @return bool
-     */
-    public function require_tls_1_2(): bool {
+	/**
+	 * Sets all state billing fields as required.
+	 *
+	 * This is hooked in when using a European payment processor.
+	 *
+	 * @internal
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $locales countries and locale-specific address field info
+	 * @return array
+	 */
+	public function require_billing_fields( $locales ) {
 
-        return true;
-    }
+		foreach ( $locales as $country_code => $fields ) {
 
+			if ( isset( $locales[ $country_code ]['state']['required'] ) ) {
+				$locales[ $country_code ]['state']['required'] = true;
+				$locales[ $country_code ]['state']['label']    = $this->get_state_label( $country_code );
+			}
+		}
 
-    /**
-     * Gets the plugin documentation URL.
-     *
-     * @see SV_WC_Plugin::get_documentation_url()
-     *
-     * @since 1.0.0
-     *
-     * @return string
-     */
-    public function get_documentation_url(): string {
-
-        // TODO: Replace with the documentation URL once it's available. {IT 2021-02-10}
-        return '';
-    }
+		return $locales;
+	}
 
 
-    /**
-     * Gets the plugin support URL.
-     *
-     * @see SV_WC_Plugin::get_support_url()
-     *
-     * @since 1.0.0
-     *
-     * @return string
-     */
-    public function get_support_url(): string {
+	/**
+	 * Gets a label for states that don't have one set by WooCommerce.
+	 *
+	 * @param string $country_code the 2-letter country code for the billing country
+	 * @return string the label for the "billing state" field at checkout
+	 * @since 1.0.0
+	 *
+	 */
+	protected function get_state_label( string $country_code ): string {
 
-        // TODO: Replace with the support URL once it's available. {IT 2021-02-10}
-        return '';
-    }
+		switch ( $country_code ) {
 
+			case 'AF':
+			case 'AT':
+			case 'BI':
+			case 'KR':
+			case 'PL':
+			case 'PT':
+			case 'LK':
+			case 'SE':
+			case 'VN':
+				$label = __( 'Province', 'authorize-net-emulation-for-woocommerce' );
+				break;
 
-    /**
-     * Gets the plugin sales page URL.
-     *
-     * @see SV_WC_Plugin::get_sales_page_url()
-     *
-     * @since 1.0.0
-     *
-     * @return string
-     */
-    public function get_sales_page_url(): string {
+			case 'AX':
+			case 'YT':
+				$label = __( 'Island', 'authorize-net-emulation-for-woocommerce' );
+				break;
 
-        // TODO: Replace with the sales page URL once it's available. {IT 2021-02-10}
-        return '';
-    }
+			case 'DE':
+				$label = __( 'State', 'authorize-net-emulation-for-woocommerce' );
+				break;
 
+			case 'EE':
+			case 'NO':
+				$label = __( 'County', 'authorize-net-emulation-for-woocommerce' );
+				break;
 
-    /**
-     * Returns the plugin name, localized.
-     *
-     * @see SV_WC_Plugin::get_plugin_name()
-     *
-     * @since 1.0.0
-     *
-     * @return string the plugin name
-     */
-    public function get_plugin_name(): string {
+			case 'FI':
+			case 'IL':
+			case 'LB':
+				$label = __( 'District', 'authorize-net-emulation-for-woocommerce' );
+				break;
 
-        return __( 'Authorize.Net Emulation for WooCommerce', 'authorize-net-emulation-for-woocommerce' );
-    }
+			default:
+				$label = __( 'Region', 'authorize-net-emulation-for-woocommerce' );
+		}
 
-
-    /**
-     * Returns __DIR__.
-     *
-     * @since 1.0.0
-     *
-     * @see SV_WC_Plugin::get_file()
-     * @return string the full path and filename of the plugin file
-     */
-    protected function get_file(): string {
-
-        return __DIR__;
-    }
+		return $label;
+	}
 
 
-    /**
-     * Main Authorize.Net Emulation Instance, ensures only one instance is/can be loaded
-     *
-     * @see wc_authorize_net_emulation()
-     *
-     * @since 1.0.0
-     *
-     * @return Plugin
-     */
-    public static function instance(): Plugin {
+	/**
+	 * Determine if TLS v1.2 is required for API requests.
+	 *
+	 * @see SV_WC_Plugin::require_tls_1_2()
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return bool
+	 */
+	public function require_tls_1_2(): bool {
 
-        if ( null === self::$instance ) {
-            self::$instance = new self();
-        }
+		return true;
+	}
 
-        return self::$instance;
-    }
+
+	/**
+	 * Gets the plugin documentation URL.
+	 *
+	 * @see SV_WC_Plugin::get_documentation_url()
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string
+	 */
+	public function get_documentation_url(): string {
+
+		// TODO: Replace with the documentation URL once it's available. {IT 2021-02-10}
+		return '';
+	}
+
+
+	/**
+	 * Gets the plugin support URL.
+	 *
+	 * @see SV_WC_Plugin::get_support_url()
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string
+	 */
+	public function get_support_url(): string {
+
+		// TODO: Replace with the support URL once it's available. {IT 2021-02-10}
+		return '';
+	}
+
+
+	/**
+	 * Gets the plugin sales page URL.
+	 *
+	 * @see SV_WC_Plugin::get_sales_page_url()
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string
+	 */
+	public function get_sales_page_url(): string {
+
+		// TODO: Replace with the sales page URL once it's available. {IT 2021-02-10}
+		return '';
+	}
+
+
+	/**
+	 * Returns the plugin name, localized.
+	 *
+	 * @see SV_WC_Plugin::get_plugin_name()
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string the plugin name
+	 */
+	public function get_plugin_name(): string {
+
+		return __( 'Authorize.Net Emulation for WooCommerce', 'authorize-net-emulation-for-woocommerce' );
+	}
+
+
+	/**
+	 * Returns __DIR__.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @see SV_WC_Plugin::get_file()
+	 * @return string the full path and filename of the plugin file
+	 */
+	protected function get_file(): string {
+
+		return __DIR__;
+	}
+
+
+	/**
+	 * Main Authorize.Net Emulation Instance, ensures only one instance is/can be loaded
+	 *
+	 * @see wc_authorize_net_emulation()
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return Plugin
+	 */
+	public static function instance(): Plugin {
+
+		if ( null === self::$instance ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
+	}
 }

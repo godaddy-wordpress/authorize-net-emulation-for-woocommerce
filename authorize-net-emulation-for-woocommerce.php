@@ -44,7 +44,7 @@ class WC_Authorize_Net_Emulation_Loader {
 	const MINIMUM_WC_VERSION = '4.0';
 
 	/** SkyVerge plugin framework version used by this plugin */
-	const FRAMEWORK_VERSION = '5.10.3';
+	const FRAMEWORK_VERSION = '5.10.4';
 
 	/** the plugin name, for displaying notices */
 	const PLUGIN_NAME = 'Authorize.Net Emulation for WooCommerce';

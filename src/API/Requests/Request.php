@@ -25,7 +25,7 @@ namespace SkyVerge\WooCommerce\Authorize_Net\Emulation\API\Requests;
 
 defined( 'ABSPATH' ) or exit;
 
-use SkyVerge\WooCommerce\PluginFramework\v5_10_3 as Framework;
+use SkyVerge\WooCommerce\PluginFramework\v5_10_4 as Framework;
 
 /**
  * Authorize.Net Emulation for WooCommerce API Request Class

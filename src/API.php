@@ -28,7 +28,7 @@ defined( 'ABSPATH' ) or exit;
 use SkyVerge\WooCommerce\Authorize_Net\Emulation\API\Requests\Request;
 use SkyVerge\WooCommerce\Authorize_Net\Emulation\API\Responses\Response;
 use SkyVerge\WooCommerce\Authorize_Net\Emulation\Gateways\CreditCard;
-use SkyVerge\WooCommerce\PluginFramework\v5_10_3 as Framework;
+use SkyVerge\WooCommerce\PluginFramework\v5_10_4 as Framework;
 
 /**
  * Authorize.Net AIM Emulation API Class

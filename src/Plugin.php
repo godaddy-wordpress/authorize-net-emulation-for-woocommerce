@@ -24,7 +24,7 @@
 namespace SkyVerge\WooCommerce\Authorize_Net\Emulation;
 
 use SkyVerge\WooCommerce\Authorize_Net\Emulation\Lifecycle;
-use SkyVerge\WooCommerce\PluginFramework\v5_10_3 as Framework;
+use SkyVerge\WooCommerce\PluginFramework\v5_10_4 as Framework;
 
 defined( 'ABSPATH' ) or exit;
 

@@ -26,7 +26,7 @@ namespace SkyVerge\WooCommerce\Authorize_Net\Emulation;
 defined( 'ABSPATH' ) or exit;
 
 use SkyVerge\WooCommerce\Authorize_Net\Emulation\Plugin;
-use SkyVerge\WooCommerce\PluginFramework\v5_10_3 as Framework;
+use SkyVerge\WooCommerce\PluginFramework\v5_10_4 as Framework;
 
 /**
  * The plugin lifecycle handler.

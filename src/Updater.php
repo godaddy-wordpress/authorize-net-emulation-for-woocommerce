@@ -31,7 +31,7 @@ defined( 'ABSPATH' ) or exit;
 /**
  * Adds the plugin updater API.
  *
- * @since 1.0.0-dev.1
+ * @since 1.0.0
  */
 class Updater {
 

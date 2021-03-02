@@ -32,7 +32,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	/**
 	 * Approved transaction response code.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @var string
 	 */
@@ -41,7 +41,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	/**
 	 * Held for review transaction response code.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @var string
 	 */
@@ -50,7 +50,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	/**
 	 * CSC match code
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @var string
 	 */
@@ -59,7 +59,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	/**
 	 * Raw response string.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @var string
 	 */
@@ -68,7 +68,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	/**
 	 * Parsed response object.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @var \stdClass
 	 */
@@ -78,7 +78,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	/**
 	 * Constructs the class.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param string $raw_response raw response data
 	 *
@@ -95,7 +95,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	/**
 	 * Parses the response string and set the parsed response object.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @throws Framework\SV_WC_Payment_Gateway_Exception
 	 */
@@ -149,7 +149,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_API_Response::transaction_approved()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return bool
 	 */
@@ -168,7 +168,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_API_Response::transaction_held()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return bool
 	 */
@@ -183,7 +183,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_API_Response::get_transaction_id()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return string|null
 	 */
@@ -201,7 +201,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_API_Response::get_status_message()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return string|null
 	 */
@@ -216,7 +216,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_API_Response::get_status_code()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return string|null
 	 */
@@ -234,7 +234,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_API_Authorization_Response::get_authorization_code()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return string|null
 	 */
@@ -250,7 +250,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	 * @see page 49 of the AIM XML developer documentation for explanations
 	 * @see Framework\SV_WC_Payment_Gateway_API_Authorization_Response::get_avs_result()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return string|null
 	 */
@@ -265,7 +265,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_API_Authorization_Response::get_csc_result()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return string|null
 	 */
@@ -281,7 +281,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	 * @see page 50 of the AIM XML developer documentation for CSC response code explanations
 	 * @see Framework\SV_WC_Payment_Gateway_API_Authorization_Response::csc_match()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return bool
 	 */
@@ -296,7 +296,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_API_Authorization_Response::get_csc_result()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return string|null
 	 */
@@ -312,7 +312,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	 * @see Framework\SV_WC_Payment_Gateway_API_Response_Message_Helper
 	 * @see Framework\SV_WC_Payment_Gateway_API_Response::get_user_message()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return string
 	 */
@@ -325,7 +325,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	/**
 	 * Gets the payment type: 'credit-card', 'echeck', etc
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return string payment type or null if not available
 	 */
@@ -338,7 +338,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	/**
 	 * Gets the string representation of the response
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return string
 	 */
@@ -353,7 +353,7 @@ class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framewor
 	 *
 	 * Stripped of any sensitive or confidential information to make it suitable for logging.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return string
 	 */

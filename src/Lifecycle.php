@@ -31,7 +31,7 @@ use SkyVerge\WooCommerce\PluginFramework\v5_10_4 as Framework;
 /**
  * The plugin lifecycle handler.
  *
- * @since 1.0.0-dev.1
+ * @since 1.0.0
  */
 class Lifecycle extends Framework\Plugin\Lifecycle {
 
@@ -50,7 +50,7 @@ class Lifecycle extends Framework\Plugin\Lifecycle {
 	/**
 	 * Performs installation tasks.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 */
 	protected function install() {
 

@@ -37,7 +37,7 @@ use SkyVerge\WooCommerce\PluginFramework\v5_10_4 as Framework;
  * Some payment processors offer emulation for their service which matches how
  * Authorize.Net handles their legacy NVP.
  *
- * @since 1.0.0-dev.1
+ * @since 1.0.0
  */
 class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Gateway_API {
 
@@ -45,7 +45,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	/**
 	 * Gateway ID, used for logging.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @var string
 	 */
@@ -54,7 +54,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	/**
 	 * Order associated with the request, if any.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @var \WC_Order|null
 	 */
@@ -63,7 +63,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	/**
 	 * API login ID value.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @var string
 	 */
@@ -72,7 +72,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	/**
 	 * API transaction key value
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @var string
 	 */
@@ -82,7 +82,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	/**
 	 * Constructs the class.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param CreditCard $gateway instance
 	 */
@@ -107,7 +107,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_API::credit_card_charge()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param \WC_Order $order order object
 	 * @return Response Authorize.Net API response object
@@ -130,7 +130,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_API::credit_card_authorization()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param \WC_Order $order order object
 	 * @return Response Authorize.Net API response object
@@ -153,7 +153,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_API::credit_card_capture()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param \WC_Order $order order object
 	 * @return Response Authorize.Net API response object
@@ -179,7 +179,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	 *
 	 * @see Framework\SV_WC_API_Base::do_pre_parse_response_validation()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @throws Framework\SV_WC_API_Exception
 	 */
@@ -201,7 +201,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_API::supports_get_tokenized_payment_methods()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return false
 	 */
@@ -216,7 +216,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_API::supports_remove_tokenized_payment_method()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return false
 	 */
@@ -231,7 +231,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	 *
 	 * @see SV_WC_Payment_Gateway_API::update_tokenized_payment_method()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return false
 	 */
@@ -247,7 +247,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	/**
 	 * Builds and returns a new API request object.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param array $type
 	 * @return Request
@@ -261,7 +261,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	/**
 	 * Gets the order associated with the request, if any.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return \WC_Order|null
 	 */
@@ -278,7 +278,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	 *
 	 * @see Framework\SV_WC_API_Base::get_api_id()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return string
 	 */
@@ -293,7 +293,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	 *
 	 * @see Framework\SV_WC_API_Base::get_plugin()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return Plugin
 	 */
@@ -309,7 +309,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	/**
 	 * No-op, as emulation does not support refund transactions
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param \WC_Order $order order object
 	 */
@@ -320,7 +320,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	/**
 	 * No-op, as emulation does not support void transactions
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param \WC_Order $order order object
 	 */
@@ -331,7 +331,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	/**
 	 * No-op, as emulation does not support eCheck transactions
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param \WC_Order $order order object
 	 */
@@ -344,7 +344,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_API::tokenize_payment_method()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param \WC_Order $order order object
 	 */
@@ -357,7 +357,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_API::remove_tokenized_payment_method()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param string $token payment method token
 	 * @param string $customer_id unique customer ID
@@ -371,7 +371,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_API::get_tokenized_payment_methods()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param string $customer_id unique customer ID
 	 */
@@ -382,7 +382,7 @@ class API extends Framework\SV_WC_API_Base implements Framework\SV_WC_Payment_Ga
 	/**
 	 * No-op: Authorize.Net does not support tokenization.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param \WC_Order $order
 	 */

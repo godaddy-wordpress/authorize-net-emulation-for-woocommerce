@@ -34,7 +34,7 @@ use SkyVerge\WooCommerce\PluginFramework\v5_10_4 as Framework;
  *
  * @link http://www.authorize.net/support/AIM_guide.pdf
  *
- * @since 1.0.0-dev.1
+ * @since 1.0.0
  */
 class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 
@@ -42,7 +42,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	/**
 	 * Auth/Capture transaction type
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @var string
 	 */
@@ -51,7 +51,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	/**
 	 * Authorize only transaction type
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @var string
 	 */
@@ -60,7 +60,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	/**
 	 * Prior auth-only capture transaction type
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @var string
 	 */
@@ -69,7 +69,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	/**
 	 * Optional order object if this request was associated with an order
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @var \WC_Order
 	 */
@@ -78,7 +78,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	/**
 	 * API login ID value.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @var string
 	 */
@@ -87,7 +87,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	/**
 	 * API transaction key value.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @var string
 	 */
@@ -96,7 +96,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	/**
 	 * Request data.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @var array
 	 */
@@ -106,7 +106,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	/**
 	 * Constructs request object.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param string $api_login_id API login ID
 	 * @param string $api_transaction_key API transaction key
@@ -121,7 +121,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	/**
 	 * Creates a credit card charge request.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param \WC_Order $order the order object
 	 */
@@ -136,7 +136,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	/**
 	 * Creates a credit card auth request.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param \WC_Order $order the order object
 	 */
@@ -151,7 +151,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	/**
 	 * Captures funds for a previous credit card authorization.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param \WC_Order $order the order object
 	 */
@@ -173,7 +173,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	/**
 	 * Creates the transaction XML, this handles all transaction types and both credit card/eCheck transactions
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param string $type transaction type
 	 */
@@ -203,7 +203,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	/**
 	 * Sets the billing and shipping address information for the request.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 */
 	private function set_addresses() {
 
@@ -260,7 +260,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	/**
 	 * Adds line items to the request.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return array
 	 */
@@ -296,7 +296,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	/**
 	 * Gets the request data.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return array
 	 */
@@ -322,7 +322,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 		/**
 		 * Filters the API the request data before it's sent to Authorize.Net.
 		 *
-		 * @since 1.0.0-dev.1
+		 * @since 1.0.0
 		 *
 		 * @param array $data request data to be filtered
 		 * @param \WC_Order $order order instance
@@ -349,7 +349,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_API_Request::to_string()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return string
 	 */
@@ -365,7 +365,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_API_Request::to_string_safe()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return string
 	 */
@@ -394,7 +394,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	/**
 	 * Gets the order associated with this request, if there was one.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return \WC_Order
 	 */
@@ -409,7 +409,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	 *
 	 * This is always POST.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return string
 	 */
@@ -422,7 +422,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	/**
 	 * Gets the request path.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return string
 	 */
@@ -435,7 +435,7 @@ class Request implements Framework\SV_WC_Payment_Gateway_API_Request {
 	/**
 	 * Gets the request parameters.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return array
 	 */

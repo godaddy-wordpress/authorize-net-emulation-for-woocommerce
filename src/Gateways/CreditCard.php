@@ -31,14 +31,14 @@ use SkyVerge\WooCommerce\PluginFramework\v5_10_4 as Framework;
 /**
  * Authorize.Net Emulation Gateway class (credit cards only)
  *
- * @since 1.0.0-dev.1
+ * @since 1.0.0
  */
 class CreditCard extends Framework\SV_WC_Payment_Gateway_Direct {
 
 	/**
 	 * Payment gateway ID.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @var string
 	 */
@@ -69,7 +69,7 @@ class CreditCard extends Framework\SV_WC_Payment_Gateway_Direct {
 	/**
 	 * Initialize the gateway
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 */
 	public function __construct() {
 
@@ -103,7 +103,7 @@ class CreditCard extends Framework\SV_WC_Payment_Gateway_Direct {
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway::get_method_form_fields()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return array
 	 */
@@ -163,7 +163,7 @@ class CreditCard extends Framework\SV_WC_Payment_Gateway_Direct {
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway_Direct::get_order()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param int $order_id order ID being processed
 	 * @return \WC_Order object with payment and transaction information attached
@@ -196,7 +196,7 @@ class CreditCard extends Framework\SV_WC_Payment_Gateway_Direct {
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway::is_configured()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return bool
 	 */
@@ -237,7 +237,7 @@ class CreditCard extends Framework\SV_WC_Payment_Gateway_Direct {
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway::get_payment_method_defaults()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return array
 	 */
@@ -262,7 +262,7 @@ class CreditCard extends Framework\SV_WC_Payment_Gateway_Direct {
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway::get_api()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return API
 	 */
@@ -279,7 +279,7 @@ class CreditCard extends Framework\SV_WC_Payment_Gateway_Direct {
 	/**
 	 * Gets the API Login ID based on the current environment
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param string|null $environment_id either 'production' or 'test'
 	 * @return string the API login ID to use
@@ -297,7 +297,7 @@ class CreditCard extends Framework\SV_WC_Payment_Gateway_Direct {
 	/**
 	 * Gets the API Transaction Key based on the current environment
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param string|null $environment_id either 'production' or 'test'
 	 * @return string the API transaction key to use
@@ -315,7 +315,7 @@ class CreditCard extends Framework\SV_WC_Payment_Gateway_Direct {
 	/**
 	 * Gets the payment gateway URL based on the current environment
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param string|null $environment_id either 'production' or 'test'
 	 * @return string payment gateway URL
@@ -338,7 +338,7 @@ class CreditCard extends Framework\SV_WC_Payment_Gateway_Direct {
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway::get_customer_id_user_meta_name()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param string $environment_id desired environment ID
 	 * @return false
@@ -357,7 +357,7 @@ class CreditCard extends Framework\SV_WC_Payment_Gateway_Direct {
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway::get_guest_customer_id()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param \WC_Order $order order object
 	 * @return false
@@ -376,7 +376,7 @@ class CreditCard extends Framework\SV_WC_Payment_Gateway_Direct {
 	 *
 	 * @see Framework\SV_WC_Payment_Gateway::get_customer_id()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param int $user_id WordPress user ID
 	 * @param array $args optional additional arguments
@@ -391,7 +391,7 @@ class CreditCard extends Framework\SV_WC_Payment_Gateway_Direct {
 	/**
 	 * Determines whether this gateway should inherit settings from another gateway.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return false
 	 */
@@ -404,7 +404,7 @@ class CreditCard extends Framework\SV_WC_Payment_Gateway_Direct {
 	/**
 	 * Determines if the gateway's settings should be shared with others.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @return bool
 	 */

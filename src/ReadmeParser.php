@@ -51,7 +51,7 @@ class ReadmeParser {
 	/**
 	 * Construct the class.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param string $contents
 	 */

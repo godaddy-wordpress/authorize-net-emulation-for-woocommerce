@@ -54,7 +54,7 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 	/**
 	 * Credit Card gateway ID.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @var string
 	 */
@@ -130,7 +130,7 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 	 *
 	 * @see WC_Countries::__construct()
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 *
 	 * @param array $countries the available countries
 	 * @return array the available countries
@@ -355,7 +355,7 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 	/**
 	 * Initializes the lifecycle handler.
 	 *
-	 * @since 1.0.0-dev.1
+	 * @since 1.0.0
 	 */
 	protected function init_lifecycle_handler() {
 

@@ -1,0 +1,153 @@
+# Copyright (C) 2021 SkyVerge
+# This file is distributed under the GNU General Public License v3.0.
+msgid ""
+msgstr ""
+"Project-Id-Version: Authorize.Net Emulation for WooCommerce 1.0.0\n"
+"Report-Msgid-Bugs-To: "
+"https://woocommerce.com/my-account/marketplace-ticket-form/\n"
+"POT-Creation-Date: 2021-03-02 02:26:54+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2021-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: src/API/Responses/Response.php:114
+msgid "Could not parse direct response."
+msgstr ""
+
+#: src/API.php:191
+msgid "HTTP %s: %s"
+msgstr ""
+
+#: src/Gateways/CreditCard.php:80
+msgid "Authorize.Net Emulation - Credit Card"
+msgstr ""
+
+#: src/Gateways/CreditCard.php:81
+msgid ""
+"Allow customers to securely pay using their credit cards via a payment "
+"processor that supports Authorize.Net Emulation."
+msgstr ""
+
+#: src/Gateways/CreditCard.php:93
+msgid "Production"
+msgstr ""
+
+#: src/Gateways/CreditCard.php:94
+msgid "Test"
+msgstr ""
+
+#: src/Gateways/CreditCard.php:115
+msgid "Payment Gateway URL"
+msgstr ""
+
+#: src/Gateways/CreditCard.php:118
+msgid ""
+"The URL to post transaction requests to. Your payment processor should "
+"provide this to you."
+msgstr ""
+
+#: src/Gateways/CreditCard.php:123
+msgid "API Login ID"
+msgstr ""
+
+#: src/Gateways/CreditCard.php:126
+msgid "Your Authorize.Net API Login ID"
+msgstr ""
+
+#: src/Gateways/CreditCard.php:130
+msgid "API Transaction Key"
+msgstr ""
+
+#: src/Gateways/CreditCard.php:133
+msgid "Your Authorize.Net API Transaction Key"
+msgstr ""
+
+#: src/Gateways/CreditCard.php:137
+msgid "Test Payment Gateway URL"
+msgstr ""
+
+#: src/Gateways/CreditCard.php:140
+msgid ""
+"The test URL to post transaction requests to. Your payment processor should "
+"provide this to you."
+msgstr ""
+
+#: src/Gateways/CreditCard.php:145
+msgid "Test API Login ID"
+msgstr ""
+
+#: src/Gateways/CreditCard.php:148
+msgid "Your test Authorize.Net API Login ID"
+msgstr ""
+
+#: src/Gateways/CreditCard.php:152
+msgid "Test API Transaction Key"
+msgstr ""
+
+#: src/Gateways/CreditCard.php:155
+msgid "Your test Authorize.Net API Transaction Key"
+msgstr ""
+
+#: src/Plugin.php:198
+msgid "Province"
+msgstr ""
+
+#: src/Plugin.php:203
+msgid "Island"
+msgstr ""
+
+#: src/Plugin.php:207
+msgid "State"
+msgstr ""
+
+#: src/Plugin.php:212
+msgid "County"
+msgstr ""
+
+#: src/Plugin.php:218
+msgid "District"
+msgstr ""
+
+#: src/Plugin.php:222
+msgid "Region"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Authorize.Net Emulation for WooCommerce"
+msgstr ""
+
+#: src/Updater.php:414
+msgid ""
+"There is a new version of %1$s available. %2$sView version %3$s details%4$s "
+"or %5$supdate now%6$s."
+msgstr ""
+
+#: src/Updater.php:494
+msgid "You do not have permission to install plugin updates"
+msgstr ""
+
+#: src/Updater.php:495
+msgid "Error"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/skyverge/authorize-net-emulation-for-woocommerce"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Adds the Authorize.Net Emulation Payment Gateway to your WooCommerce site, "
+"allowing customers to securely pay using their credit cards via a payment "
+"processor that supports Authorize.Net Emulation."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "SkyVerge"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.skyverge.com/"
+msgstr ""

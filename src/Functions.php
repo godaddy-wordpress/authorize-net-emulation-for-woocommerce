@@ -27,7 +27,7 @@ use SkyVerge\WooCommerce\Authorize_Net\Emulation\Plugin;
 /**
  * Gets the One True Instance of Authorize.Net Emulation.
  *
- * @since 1.0.0-dev.1
+ * @since 1.0.0
  *
  * @return Plugin
  */

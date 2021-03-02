@@ -3,16 +3,34 @@
   "type": "wordpress-plugin",
   "autoload": {
     "psr-4": {
-      "SkyVerge\\WooCommerce\\Authorize_Net\\Emulation\\": "includes/"
+      "SkyVerge\\WooCommerce\\Authorize_Net\\Emulation\\": "src/"
     }
   },
   "repositories": [
     {
       "type": "vcs",
       "url": "git@github.com:skyverge/wc-plugin-framework.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:skyverge/php-coding-standards.git"
     }
   ],
+  "scripts": {
+    "phpcs": [
+      "phpcs -s -p"
+    ],
+    "phpcs-diff": [
+      "git diff origin/main > diff.txt",
+      "phpcs -q --report=json > phpcs.json || true",
+      "diffFilter --phpcsStrict diff.txt phpcs.json 100"
+    ]
+  },
   "require": {
-    "skyverge/wc-plugin-framework": "5.10.3"
+    "skyverge/wc-plugin-framework": "5.10.4"
+  },
+  "require-dev": {
+    "skyverge/php-coding-standards": "dev-master",
+    "exussum12/coverage-checker": "dev-master"
   }
 }

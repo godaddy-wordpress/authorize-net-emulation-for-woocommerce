@@ -2,7 +2,7 @@
 #
 # What should be added here?
 #
-# Repository level gitignore files are intended for project 
+# Repository level gitignore files are intended for project
 # based exclusions.  To add local exclusions specific to your
 # individual development enviorment you should update your
 # global .gitignore file which will resolve all current and
@@ -10,12 +10,28 @@
 #
 #####################################################################
 
+# macOS
+.DS_Store
+
+# IDEs
+.project/
+.settings/
+.idea/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+*.iml
+.vscode/
+
 # Ignore Local Dependencies
 node_modules
 vendor
 
 # Ignore test coverage output
 coverage
+
+# Ignore build dir
+build
 
 # Ignore local dev config
 .env

@@ -15,8 +15,7 @@ Adds the Authorize.Net Emulation Payment Gateway to your WooCommerce site, allow
 
 == Installation ==
 
-TODO: add link to public GitHub repository URL
-1. Download the plugin zip file from GitHub
+1. Download the plugin zip file from [GitHub](https://github.com/skyverge/authorize-net-emulation-for-woocommerce/releases)
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Click the 'Configure' action link under Authorize.Net Emulation for WooCommerce
 4. Configure the [Authorize.Net emulator settings](https://docs.woocommerce.com/document/authorize-net/#emulation-mode)

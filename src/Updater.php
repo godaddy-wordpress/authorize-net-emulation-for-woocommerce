@@ -36,9 +36,8 @@ defined( 'ABSPATH' ) or exit;
 class Updater {
 
 
-	// TODO: update to use the plugin repository name
 	/** @var string $repe the Github repo from which updates are fetched */
-	private $repo = 'gdcorp-partners/authorize-net-emulation-for-woocommerce';
+	private $repo = 'skyverge/authorize-net-emulation-for-woocommerce';
 
 	/** @var string $api_url the URL from which updates are retrieved */
 	private $api_url;

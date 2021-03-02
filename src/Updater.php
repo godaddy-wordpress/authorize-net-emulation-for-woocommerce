@@ -76,7 +76,7 @@ class Updater {
 
 		$this->api_url      = 'https://api.github.com/repos/' . $this->repo . '/releases/latest';
 		$this->readme_url   = 'https://raw.githubusercontent.com/' . $this->repo . '/__VERSION__/readme.txt';
-		$this->download_url = 'https://github.com/' . $this->repo . '/releases/download/latest/authorize-net-emulation-for-woocommerce.zip';
+		$this->download_url = 'https://github.com/' . $this->repo . '/releases/download/initial/authorize-net-emulation-for-woocommerce.zip';
 
 		$this->plugin_file = $this->get_plugin()->get_plugin_file();
 		$this->name        = plugin_basename( $this->plugin_file );

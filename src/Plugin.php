@@ -37,7 +37,7 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 
 
 	/** plugin version number */
-	const VERSION = '1.1.0-dev.1';
+	const VERSION = '1.1.0';
 
 	/** plugin id */
 	const PLUGIN_ID = 'authorize_net_emulation';

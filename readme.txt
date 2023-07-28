@@ -2,7 +2,7 @@
 Contributors: SkyVerge
 Tags: woocommerce
 Requires at least: 5.6
-Tested up to: 5.6.2
+Tested up to: 6.2.2
 Requires PHP: 7.4
 Stable tag: 1.1.0-dev,1
 License: GPLv3 or later
@@ -23,7 +23,7 @@ Adds the Authorize.Net Emulation Payment Gateway to your WooCommerce site, allow
 
 == Changelog ==
 
-= 2023.nn.nn - version 1.1.0-dev.1 =
+= 2023.07.28 - version 1.1.0 =
  * Misc - Add compatibility for WooCommerce High Performance Order Storage (HPOS)
  * Misc - Require PHP 7.4+ and WordPress 5.6+
 

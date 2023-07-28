@@ -1,15 +1,15 @@
-# Copyright (C) 2021 SkyVerge
+# Copyright (C) 2023 SkyVerge
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: Authorize.Net Emulation for WooCommerce 1.0.0\n"
+"Project-Id-Version: Authorize.Net Emulation for WooCommerce 1.1.0\n"
 "Report-Msgid-Bugs-To: "
 "https://woocommerce.com/my-account/marketplace-ticket-form/\n"
-"POT-Creation-Date: 2021-03-02 02:26:54+00:00\n"
+"POT-Creation-Date: 2023-07-28 04:17:02+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2021-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2023-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
@@ -91,27 +91,27 @@ msgstr ""
 msgid "Your test Authorize.Net API Transaction Key"
 msgstr ""
 
-#: src/Plugin.php:198
+#: src/Plugin.php:199
 msgid "Province"
 msgstr ""
 
-#: src/Plugin.php:203
+#: src/Plugin.php:204
 msgid "Island"
 msgstr ""
 
-#: src/Plugin.php:207
+#: src/Plugin.php:208
 msgid "State"
 msgstr ""
 
-#: src/Plugin.php:212
+#: src/Plugin.php:213
 msgid "County"
 msgstr ""
 
-#: src/Plugin.php:218
+#: src/Plugin.php:219
 msgid "District"
 msgstr ""
 
-#: src/Plugin.php:222
+#: src/Plugin.php:223
 msgid "Region"
 msgstr ""
 

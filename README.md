@@ -1,9 +1,9 @@
 # Authorize.Net Emulation for WooCommerce
 
 ## Plugin requirements
-- PHP 7.0+
-- WordPress 5.2+
-- WooCommerce 3.5+
+- PHP 7.4+
+- WordPress 5.6+
+- WooCommerce 4.0+
 
 ## Local development
 1. Clone this repository

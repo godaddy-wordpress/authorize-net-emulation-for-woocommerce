@@ -6,20 +6,20 @@
  * Description: Adds the Authorize.Net Emulation Payment Gateway to your WooCommerce site, allowing customers to securely pay using their credit cards via a payment processor that supports Authorize.Net Emulation.
  * Author: SkyVerge
  * Author URI: http://www.skyverge.com/
- * Version: 1.0.0
+ * Version: 1.1.0-dev.1
  * Text Domain: authorize-net-emulation-for-woocommerce
  * Domain Path: /i18n/languages/
  *
- * Copyright: (c) 2021, SkyVerge, Inc. (info@skyverge.com)
+ * Copyright: (c) 2021-2023, SkyVerge, Inc. (info@skyverge.com)
  *
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  *
  * @author    SkyVerge
- * @copyright Copyright (c) 2021, SkyVerge, Inc.
+ * @copyright Copyright (c) 2021-2023, SkyVerge, Inc.
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  *
- * WC requires at least: 3.5
+ * WC requires at least: 4.0
  * WC tested up to: 5.0.0
  */
 
@@ -35,16 +35,16 @@ class WC_Authorize_Net_Emulation_Loader {
 
 
 	/** minimum PHP version required by this plugin */
-	const MINIMUM_PHP_VERSION = '7.0';
+	const MINIMUM_PHP_VERSION = '7.4';
 
 	/** minimum WordPress version required by this plugin */
-	const MINIMUM_WP_VERSION = '5.2';
+	const MINIMUM_WP_VERSION = '5.6';
 
 	/** minimum WooCommerce version required by this plugin */
 	const MINIMUM_WC_VERSION = '4.0';
 
 	/** SkyVerge plugin framework version used by this plugin */
-	const FRAMEWORK_VERSION = '5.10.4';
+	const FRAMEWORK_VERSION = '5.11.6';
 
 	/** the plugin name, for displaying notices */
 	const PLUGIN_NAME = 'Authorize.Net Emulation for WooCommerce';

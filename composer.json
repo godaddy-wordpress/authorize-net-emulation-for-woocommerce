@@ -27,7 +27,7 @@
     ]
   },
   "require": {
-    "skyverge/wc-plugin-framework": "5.10.4"
+    "skyverge/wc-plugin-framework": "5.11.6"
   },
   "require-dev": {
     "skyverge/php-coding-standards": "dev-master",

@@ -17,14 +17,14 @@
  * needs please refer to https://docs.woocommerce.com/document/authorize-net/#emulation-mode for more information.
  *
  * @author      SkyVerge
- * @copyright   Copyright (c) 2021, SkyVerge, Inc.
+ * @copyright   Copyright (c) 2021-2023, SkyVerge, Inc.
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
 namespace SkyVerge\WooCommerce\Authorize_Net\Emulation;
 
 use SkyVerge\WooCommerce\Authorize_Net\Emulation\Lifecycle;
-use SkyVerge\WooCommerce\PluginFramework\v5_10_4 as Framework;
+use SkyVerge\WooCommerce\PluginFramework\v5_11_6 as Framework;
 
 defined( 'ABSPATH' ) or exit;
 
@@ -37,7 +37,7 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 
 
 	/** plugin version number */
-	const VERSION = '1.0.0';
+	const VERSION = '1.1.0-dev.1';
 
 	/** plugin id */
 	const PLUGIN_ID = 'authorize_net_emulation';
@@ -72,12 +72,13 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 			self::PLUGIN_ID,
 			self::VERSION,
 			[
-				'text_domain' => 'authorize-net-emulation-for-woocommerce',
-				'gateways'    => [
+				'text_domain'   => 'authorize-net-emulation-for-woocommerce',
+				'supports_hpos' => true,
+				'gateways'      => [
 					self::CREDIT_CARD_GATEWAY_ID => Gateways\CreditCard::class,
 				],
-				'require_ssl' => true,
-				'supports'    => [ self::FEATURE_CAPTURE_CHARGE ],
+				'require_ssl'   => true,
+				'supports'      => [ self::FEATURE_CAPTURE_CHARGE ],
 			]
 		);
 
@@ -91,12 +92,6 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 	 * @since 1.0.0
 	 */
 	private function setup_hooks() {
-		// Declare HPOS compatibility
-		add_action( 'before_woocommerce_init', function() {
-			if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
-				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
-			}
-		} );
 
 		if ( ! strncmp( get_option( 'woocommerce_default_country' ), 'US:', 3 ) ) {
 

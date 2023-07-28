@@ -17,7 +17,7 @@
  * needs please refer to https://docs.woocommerce.com/document/authorize-net/#emulation-mode for more information.
  *
  * @author      SkyVerge
- * @copyright   Copyright (c) 2021, SkyVerge, Inc.
+ * @copyright   Copyright (c) 2021-2023, SkyVerge, Inc.
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  */
 
@@ -25,7 +25,7 @@ namespace SkyVerge\WooCommerce\Authorize_Net\Emulation\API\Responses;
 
 defined( 'ABSPATH' ) or exit;
 
-use SkyVerge\WooCommerce\PluginFramework\v5_10_4 as Framework;
+use SkyVerge\WooCommerce\PluginFramework\v5_11_6 as Framework;
 
 class Response implements Framework\SV_WC_Payment_Gateway_API_Response, Framework\SV_WC_Payment_Gateway_API_Authorization_Response {
 

@@ -32,5 +32,10 @@
   "require-dev": {
     "skyverge/php-coding-standards": "dev-master",
     "exussum12/coverage-checker": "dev-master"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
   }
 }

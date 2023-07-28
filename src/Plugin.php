@@ -91,6 +91,12 @@ class Plugin extends Framework\SV_WC_Payment_Gateway_Plugin {
 	 * @since 1.0.0
 	 */
 	private function setup_hooks() {
+		// Declare HPOS compatibility
+		add_action( 'before_woocommerce_init', function() {
+			if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+			}
+		} );
 
 		if ( ! strncmp( get_option( 'woocommerce_default_country' ), 'US:', 3 ) ) {
 

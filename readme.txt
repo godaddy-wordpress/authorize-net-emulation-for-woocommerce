@@ -1,9 +1,10 @@
 === Authorize.Net Emulation for WooCommerce ===
 Contributors: SkyVerge
 Tags: woocommerce
-Requires at least: 5.2
+Requires at least: 5.6
 Tested up to: 5.6.2
-Stable tag: 1.0.0
+Requires PHP: 7.4
+Stable tag: 1.1.0-dev,1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,6 +22,10 @@ Adds the Authorize.Net Emulation Payment Gateway to your WooCommerce site, allow
 4. Configure the [Authorize.Net emulator settings](https://docs.woocommerce.com/document/authorize-net/#emulation-mode)
 
 == Changelog ==
+
+= 2023.nn.nn - version 1.1.0-dev.1 =
+ * Misc - Add compatibility for WooCommerce High Performance Order Storage (HPOS)
+ * Misc - Require PHP 7.4+ and WordPress 5.6+
 
 = 2021.03.01 - version 1.0.0 =
  * Initial release
